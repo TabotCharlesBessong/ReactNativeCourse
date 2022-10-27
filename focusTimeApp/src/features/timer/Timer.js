@@ -6,9 +6,10 @@ import Countdown from '../../component/Countdown';
 import RoundedButton from '../../component/RoundedButton';
 import { ProgressBar } from 'react-native-paper';
 import Timing from './Timing';
+import { useKeepAwake } from 'expo-keep-awake';
 
 const Timer = ({focusSubject}) => {
-
+  useKeepAwake()
   const [isStarted, setIsStarted] = useState(false)
   const [progress, setProgress] = useState(1)
   const [minutes, setMinutes] = useState(1)
