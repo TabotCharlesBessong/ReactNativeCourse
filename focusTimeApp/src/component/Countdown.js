@@ -29,6 +29,10 @@ const Countdown = ({
     })
   }
 
+  useEffect(() => {
+    setMillis(minutesToMillis(minutes))
+  },[minutes])
+
   useEffect(()=>{
     if(isPaused){
       if(interval.current) clearInterval(interval.current)
