@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React , {useState} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Focus from './src/features/focus/Focus'
+import { colors } from './src/utils/Color';
 
 export default function App() {
   const [focusSubject,setFocusSubject] = useState(null)
@@ -18,7 +19,7 @@ export default function App() {
 }
 const styles = StyleSheet.create({
 	container: {
-		backgroundColor: "#1ab785",
+		backgroundColor: colors.darkBlue,
     padding:50,
     width:'100%',
     height:'100%'

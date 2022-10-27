@@ -2,7 +2,9 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { StyleSheet, Text, View , Platform } from "react-native";
 import { TextInput } from "react-native-paper";
+import { fontSizes , paddingSizes, PaddingSizes } from '../../utils/Sizes'
 import RoundedButton from "../../component/RoundedButton";
+import { colors } from "../../utils/Color";
 
 const  Focus = ({addSubject}) =>{
 	const [tempItem, setTempItem] = useState()
@@ -30,21 +32,22 @@ const styles = StyleSheet.create({
 	},
 	titleContainer:{
     flex:0.5,
-		padding: Platform.OS === 'android' ? 16 : 50,		justifyContent:'center'
+		padding: paddingSizes.md,
+		justifyContent:'center'
 	},
 	title:{
-    color:'#fff',
+    color:colors.white,
 		fontWeight:500,
-		fontSize:24
+		fontSize:fontSizes.lg
 	},
 	textInput:{
-		backgroundColor:'#fff',
+		backgroundColor:colors.white,
 		width:'90%',
 		height:'3rem',
 		borderRadius:'1rem'
 	},
 	inputContainer:{
-		paddingTop:20,
+		paddingTop:paddingSizes.md,
 		flexDirection:'row',
 		alignItems:'center'
 	}
