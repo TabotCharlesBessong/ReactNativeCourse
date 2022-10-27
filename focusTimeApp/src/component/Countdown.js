@@ -10,6 +10,7 @@ const formatTime = (time) => time < 10 ? '0' + time : time
 const Countdown = ({
   minutes = 20,
   isPaused ,
+  onProgress
 }) => {
 
   const interval = React.useRef(null)
@@ -22,6 +23,7 @@ const Countdown = ({
       }
       const timeLeft = time - 1000 
       // report the progress
+      onProgress(timeLeft / minutesToMillis(minutes))
 
       return timeLeft
     })
@@ -29,6 +31,7 @@ const Countdown = ({
 
   useEffect(()=>{
     if(isPaused){
+      if(interval.current) clearInterval(interval.current)
       return
     }
     interval.current = setInterval(countdown,1000)
