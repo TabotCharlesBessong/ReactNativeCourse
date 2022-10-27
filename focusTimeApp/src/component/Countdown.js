@@ -9,7 +9,7 @@ const formatTime = (time) => time < 10 ? '0' + time : time
 
 const Countdown = ({
   minutes = 20,
-  isPaused, 
+  isPaused ,
 }) => {
 
   const interval = React.useRef(null)
@@ -28,10 +28,13 @@ const Countdown = ({
   }
 
   useEffect(()=>{
+    if(isPaused){
+      return
+    }
     interval.current = setInterval(countdown,1000)
 
     return () => clearInterval(interval.current)
-  },[])
+  },[isPaused])
 
   const [millis, setMillis] = useState(minutesToMillis(minutes))
   const minute = Math.floor(millis / 1000 / 60) % 60 

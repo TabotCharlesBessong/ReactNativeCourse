@@ -9,12 +9,15 @@ const RoundedButton = ({
   ...props
 }) => {
   return (
-    <View>
-      <TouchableOpacity style={[styles(size).radius,style]}  >
-        <Text style={[styles.text , textStyle]} >{props.title}</Text>
-      </TouchableOpacity>
-    </View>
-  )
+		<View>
+			<TouchableOpacity
+				style={[styles(size).radius, style]}
+				onPress={props.onPress}
+			>
+				<Text style={[styles(size).text, textStyle]}>{props.title}</Text>
+			</TouchableOpacity>
+		</View>
+	);
 }
 
 const styles = (size) =>
@@ -26,6 +29,7 @@ const styles = (size) =>
 			alignItems: "center",
 			borderColor: colors.white,
 			borderWidth: 2,
+			justifyContent: "center",
 		},
 		text: {
 			color: colors.white,
