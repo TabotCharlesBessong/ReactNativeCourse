@@ -3,10 +3,11 @@ import React from 'react'
 import {View, Text , StyleSheet } from 'react-native'
 import images from '../../../constant/images'
 import {Card} from 'react-native-paper'
-import { Address, Info, RestaurantCard } from './Styles'
+import { Address, Info, Rating, RestaurantCard, Section, SectionEnd } from './Styles'
 import styled from 'styled-components/native'
-// import {SvgXml} from 'react-native-svg'
+import {SvgXml , SvgUri} from 'react-native-svg'
 import star from '../../../../assets/star'
+// import open from '../../../../assets/open'
 
 const Title = styled(Text)`
   padding:16px;,
@@ -41,9 +42,22 @@ const RestaurantInfo = ({restaurant ={} }) => {
 				/>
 				<Info>
 					<Title>{name}</Title>
-					{/* {ratingArray.map(() => (
+					<Section>
+						<Rating>
+							{/* {ratingArray.map(() => (
 						<SvgXml xml={star} width={20} height={20} />
-					))} */}
+					  ))} */}
+							{/* <SvgUri
+								width="100%"
+								height="100%"
+								svgXmlData="https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/debian.svg"
+							/> */}
+						</Rating>
+						{/* <SectionEnd>
+              { isOpenNow && <SvgXml xml={open} width={20} height={20} /> }
+            </SectionEnd> */}
+					</Section>
+
 					<Address> {address} </Address>
 				</Info>
 			</RestaurantCard>
