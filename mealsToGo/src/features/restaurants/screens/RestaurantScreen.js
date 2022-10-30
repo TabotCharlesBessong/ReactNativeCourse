@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React , {useState} from 'react'
 import {
 	SafeAreaView,
 	StyleSheet,
@@ -13,6 +13,7 @@ import RestaurantInfo from '../components/RestaurantInfo';
 
 const isAndroid = Platform.OS === "android";
 const RestaurantScreen = () => {
+	const [restaurant, setRestaurant] = useState({})
   return (
 		<SafeAreaView
 			style={{ flex: 1, marginTop: isAndroid ? StatusBar.currentHeight : 0 }}
@@ -23,7 +24,7 @@ const RestaurantScreen = () => {
 			<View style={{ flex: 1, padding: 16, backgroundColor: "blue" }}>
 				<Text>List</Text>
 			</View>
-			<RestaurantInfo/>
+			<RestaurantInfo restaurant={restaurant} />
 		</SafeAreaView>
 	);
 }
