@@ -13,7 +13,7 @@ import RestaurantInfo from '../components/RestaurantInfo';
 
 const isAndroid = Platform.OS === "android";
 const RestaurantScreen = () => {
-	const [restaurant, setRestaurant] = useState({})
+	// const [restaurant, setRestaurant] = useState({})
   return (
 		<SafeAreaView
 			style={{ flex: 1, marginTop: isAndroid ? StatusBar.currentHeight : 0 }}
@@ -21,10 +21,9 @@ const RestaurantScreen = () => {
 			<View style={styles.search}>
 				<Searchbar style={{ flex: 1, marginRight: "auto" }} />
 			</View>
-			<View style={{ flex: 1, padding: 16, backgroundColor: "blue" }}>
-				<Text>List</Text>
+			<View style={styles.list} >
+				<RestaurantInfo  />
 			</View>
-			<RestaurantInfo restaurant={restaurant} />
 		</SafeAreaView>
 	);
 }
@@ -35,6 +34,11 @@ const styles = StyleSheet.create({
 		backgroundColor: "green",
 		flexDirection: "row",
 		alignItems: "center",
+	},
+	list: {
+		flex: 1,
+		padding: 16,
+		backgroundColor: "blue",
 	},
 });
 

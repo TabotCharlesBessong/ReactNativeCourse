@@ -1,23 +1,43 @@
 
 import React from 'react'
-import {View, Text} from 'react-native'
+import {View, Text , StyleSheet } from 'react-native'
 import images from '../../../constant/images'
+import {Card} from 'react-native-paper'
 
-const RestaurantInfo = ({restaurant}) => {
+const RestaurantInfo = ({restaurant ={} }) => {
   const {
     name= ' my restaurant',
     icon,
-    photos = images.home ,
+    photos = [images.home , images.adaptiveIcon] ,
     address='molyko, buea',
-    openingHours = '8am - 6pm',
-    rating,
-    isClosedTemporarily
+    isOpenNow = true,
+    rating = 4.2,
+    isClosedTemporarily = false
   } = restaurant
   return (
     <View>
-      <Text style={{color:'#fff'}} >Hello world</Text>
+      <Card elevation={5} style={StyleSheet.card} >
+        <Card.Cover key={name} style={styles.cover} source={{uri:photos[0]}} />
+        <Text style={styles.title} > {name} </Text> 
+        <Text style={styles.title} > {address} </Text>
+      </Card>
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  card:{
+    backgroundColor:'#fff'
+  },
+  cover:{
+    padding:20,
+    backgroundColor:'#fff'
+  },
+  title:{
+    textAlign:'center',
+    padding:4,
+    textTransform:'capitalize'
+  }
+})
 
 export default RestaurantInfo
