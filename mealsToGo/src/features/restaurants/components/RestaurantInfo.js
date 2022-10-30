@@ -3,6 +3,7 @@ import React from 'react'
 import {View, Text , StyleSheet } from 'react-native'
 import images from '../../../constant/images'
 import {Card} from 'react-native-paper'
+// import {  RestaurantCard } from './Styles'
 // import styled from 'styled-components/native'
 
 // const Title = styled(Text)`
