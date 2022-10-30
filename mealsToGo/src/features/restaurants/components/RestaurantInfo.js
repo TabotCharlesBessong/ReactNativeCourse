@@ -2,10 +2,12 @@
 import React from 'react'
 import {View, Text} from 'react-native'
 
-const RestaurantInfo = () => {
+const RestaurantInfo = ({restaurant}) => {
   return (
     <View>
-      <Text>Hello world</Text>
+      <Text style={{color:'#fff'}} >Hello world</Text>
     </View>
   )
 }
+
+export default RestaurantInfo

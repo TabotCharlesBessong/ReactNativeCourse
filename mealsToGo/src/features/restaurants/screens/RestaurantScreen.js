@@ -9,9 +9,10 @@ import {
 	StatusBar,
 } from "react-native";
 import { Searchbar } from "react-native-paper";
+import RestaurantInfo from '../components/RestaurantInfo';
 
 const isAndroid = Platform.OS === "android";
-export const RestaurantScreen = () => {
+const RestaurantScreen = () => {
   return (
 		<SafeAreaView
 			style={{ flex: 1, marginTop: isAndroid ? StatusBar.currentHeight : 0 }}
@@ -22,6 +23,7 @@ export const RestaurantScreen = () => {
 			<View style={{ flex: 1, padding: 16, backgroundColor: "blue" }}>
 				<Text>List</Text>
 			</View>
+			<RestaurantInfo/>
 		</SafeAreaView>
 	);
 }
@@ -35,4 +37,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-// export default RestaurantScreen
+export default RestaurantScreen
