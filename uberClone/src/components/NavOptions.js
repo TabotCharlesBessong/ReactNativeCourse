@@ -3,8 +3,11 @@ import React from 'react'
 import data from '../constant/data'
 import tw from 'tailwind-react-native-classnames'
 import { Icon } from 'react-native-elements'
+import { useNavigation } from '@react-navigation/native'
 
 const NavOptions = () => {
+
+  const navigation = useNavigation()
   console.log(data.data1)
   return (
     <FlatList
@@ -12,7 +15,7 @@ const NavOptions = () => {
     horizontal
     keyExtractor={(item) => item.id }
     renderItem={({item}) => (
-      <TouchableOpacity style={tw`p-2 pl-6 pt-4 pb-8 bg-gray-200 m-2`} >
+      <TouchableOpacity onPress={() => navigation.navigate(item.screen) } style={tw`p-2 pl-6 pt-4 pb-8 bg-gray-200 m-2`} >
         <View>
           <Image
           style={{
