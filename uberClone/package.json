@@ -11,6 +11,7 @@
   "dependencies": {
     "@expo-google-fonts/lato": "^0.2.2",
     "@expo-google-fonts/oswald": "^0.2.2",
+    "@reduxjs/toolkit": "^1.8.6",
     "expo": "~46.0.16",
     "expo-font": "~10.2.0",
     "expo-google-fonts": "^0.0.0",
@@ -22,6 +23,8 @@
     "react-native-svg": "^13.4.0",
     "react-native-vector-icons": "^9.2.0",
     "react-native-web": "~0.18.7",
+    "react-redux": "^8.0.4",
+    "redux": "^4.2.0",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
