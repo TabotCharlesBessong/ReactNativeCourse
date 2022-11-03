@@ -6,8 +6,12 @@ import { NavOptions } from '../components'
 import images from '../constant/images'
 import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete'
 import {API_KEY} from '@env'
+import {useDispatch} from 'react-redux'
+// import 
 
 const HomeScreen = () => {
+
+	const dispatch = useDispatch()
   return (
 		<SafeAreaView style={tw`bg-white h-full`}>
 			<View style={tw`p-5`}>
@@ -33,6 +37,13 @@ const HomeScreen = () => {
 							fontSize: 20,
 						},
 					}}
+					onPress={(data,details = null)=> {
+            console.log(data)
+					}}
+					fetchDetails={true}
+					returnKeyType = {"search"}
+					enablePoweredByContainer={false}
+					minLength={2}
 					query={{
 						key: API_KEY,
 						language: "en",
