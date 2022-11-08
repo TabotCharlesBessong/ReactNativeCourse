@@ -7,7 +7,7 @@ import { Address, Info, Rating, RestaurantCard, Section, SectionEnd } from './St
 import styled from 'styled-components/native'
 import {SvgXml , SvgUri} from 'react-native-svg'
 import star from '../../../../assets/star'
-// import open from '../../../../assets/open'
+import {Icon} from 'react-native-element'
 
 const Title = styled(Text)`
   padding:16px;,
@@ -52,10 +52,12 @@ const RestaurantInfo = ({restaurant ={} }) => {
 								height="100%"
 								svgXmlData="https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/debian.svg"
 							/> */}
+							{<Icon name="star" type="antdesign" color="golden" />}
+							{ratingArray.map(() => (
+								<Icon name="star" type="antdesign" color="golden" />
+							))}
 						</Rating>
-						{/* <SectionEnd>
-              { isOpenNow && <SvgXml xml={open} width={20} height={20} /> }
-            </SectionEnd> */}
+						
 					</Section>
 
 					<Address> {address} </Address>
