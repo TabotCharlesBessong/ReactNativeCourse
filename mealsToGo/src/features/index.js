@@ -1,8 +1,8 @@
 
 import RestaurantScreen from "./restaurants/screens/RestaurantScreen";
-import RestaurantInfo from "./restaurants/component/RestaurantInfo";
+import RestaurantInfoCard from "./restaurants/component/RestaurantInfoCard";
 
 export {
   RestaurantScreen,
-  RestaurantInfo
+  RestaurantInfoCard
 }
