@@ -4,6 +4,7 @@ import { Card } from "react-native-paper";
 import images from "../../../constant/images";
 import styled from "styled-components/native"
 import { Icon } from "react-native-elements";
+import {Spacer} from '../../../component'
 // import { SvgXml } from "react-native-svg";
 
 const Title = styled(Text)`
@@ -56,7 +57,7 @@ const RestaurantInfoCard = ({ restaurant = {} }) => {
 		address = "100 some random street",
 		isOpenNow = true,
 		rating = 4,
-		isClosedTemporarily,
+		isClosedTemporarily = true,
 	} = restaurant;
 
 	const ratingArray = Array.from(new Array(Math.floor(rating)));
@@ -84,18 +85,19 @@ const RestaurantInfoCard = ({ restaurant = {} }) => {
 								CLOSED TEMPORARILY
 							</Text>
 						)}
-						<View style={{ paddingLeft: 16 }} />
-						{isOpenNow && (
-							<Icon
-								name="restaurant_menu"
-								size={50}
-								color="#373647"
-								onPress={() => {
-									Alert.alert("Want to take ride downward");
-								}}
-							/>
-						)}
-						<View style={{ paddingLeft: 16 }} />
+						<Spacer variant="left.large">
+							{isOpenNow && (
+								<Icon
+									name="restaurant_menu"
+									size={50}
+									color="#373647"
+									onPress={() => {
+										Alert.alert("Want to take ride downward");
+									}}
+								/>
+							)}
+						</Spacer>
+						<Spacer variant="left.large" />
 						<Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
 					</SectionEnd>
 				</Section>
