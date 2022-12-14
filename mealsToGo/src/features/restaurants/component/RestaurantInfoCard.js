@@ -15,6 +15,7 @@ const Title = styled(Text)`
 
 const RestaurantCard = styled(Card)`
 	color: ${(props) => props.theme.colors.ui.primary};
+	margin-bottom:${(props) => props.theme.space[3] }
 `;
 
 const Rating = styled.View`

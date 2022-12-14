@@ -27,12 +27,16 @@ const RestaurantListContainer = styled.View`
 const RestaurantScreen = () => {
 	return (
 		<SafeArea>
-    <SearchContainer>
-      <Searchbar />
+			<SearchContainer>
+				<Searchbar />
 			</SearchContainer>
-    <RestaurantListContainer>
-      <RestaurantInfoCard />
-    </RestaurantListContainer>
+			<RestaurantListContainer>
+				<RestaurantInfoCard />
+				<RestaurantInfoCard />
+				<RestaurantInfoCard />
+				<RestaurantInfoCard />
+				<RestaurantInfoCard />
+			</RestaurantListContainer>
 		</SafeArea>
 	);
 };
