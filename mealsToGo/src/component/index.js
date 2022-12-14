@@ -1,4 +1,4 @@
-// import Typography from './typography/Typography'
+import Typography from './typography/Text'
 import Spacer from './spacer/Spacer'
 // import FadeAnimation from './animation/FadeAnimation'
 // import FavouriteComponet from './favourites/FavouriteComponent'
@@ -7,7 +7,7 @@ import Spacer from './spacer/Spacer'
 // import SafeArea from './utility/SafeArea'
 
 export {
-  // Typography,
+  Typography,
   Spacer,
   // FadeAnimation,
   // FavouriteComponet,
