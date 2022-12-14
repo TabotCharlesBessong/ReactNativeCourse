@@ -1,8 +1,6 @@
 import React from "react";
 import { Text,View ,Image,StyleSheet} from "react-native";
-import { Card } from "react-native-paper";
 import images from "../../../constant/images";
-import styled from "styled-components/native"
 import { Icon as IconE } from "react-native-elements";
 import {Spacer } from '../../../component'
 // import { SvgXml } from "react-native-svg";

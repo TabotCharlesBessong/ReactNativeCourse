@@ -42,7 +42,9 @@ const variants = {
 };
 
 const Text = styled.Text`
+    ${'' /* default styling of text  */}
 	${({ theme }) => defaultTextStyles(theme)};
+    ${'' /* styling of text base on a choice */}
 	${({ variant, theme }) => variants[variant](theme)};
 `;
 

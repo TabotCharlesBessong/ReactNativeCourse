@@ -1,6 +1,6 @@
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import { Text, View, SafeAreaView, StyleSheet } from "react-native";
-import {RestaurantInfoCard, RestaurantScreen} from './src/features'
+import { Text } from "react-native";
+import {RestaurantScreen} from './src/features'
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infrastructure/theme";
 import { NavigationContainer } from "@react-navigation/native";
@@ -29,7 +29,8 @@ const Map = () => (
 );
 
 export default function App() {
-
+  
+	// loading the fonts into the app 
 	const [oswaldLoaded] = useOswald({
 		Oswald_400Regular,
 	});

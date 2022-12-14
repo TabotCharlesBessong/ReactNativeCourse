@@ -3,11 +3,8 @@ import React from "react";
 import { Searchbar } from "react-native-paper";
 import { Spacer } from "../../../component";
 
-import { Platform } from "react-native-web";
 import RestaurantInfoCard from "../component/RestaurantInfoCard";
-const isAndroid = Platform.OS === "android";
-const height = StatusBar.currentHeight;
-import { SafeArea , SearchContainer , RestaurantListContainer } from "./Styles";
+import {  SearchContainer  } from "./Styles";
 import { SafeAreas } from "../../../component";
 import styled from "styled-components";
 
@@ -23,6 +20,8 @@ const RestaurantScreen = () => {
 			<SearchContainer>
 				<Searchbar />
 			</SearchContainer>
+
+			{/* rendering list of restaurant Card */}
 			<RestaurantList
 				data={[
 					{ name: 1 },
