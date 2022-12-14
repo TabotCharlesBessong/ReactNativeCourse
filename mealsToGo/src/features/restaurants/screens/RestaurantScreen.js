@@ -8,14 +8,22 @@ import RestaurantInfoCard from "../component/RestaurantInfoCard";
 const isAndroid = Platform.OS === "android";
 const height = StatusBar.currentHeight;
 import { SafeArea , SearchContainer , RestaurantListContainer } from "./Styles";
+import { SafeAreas } from "../../../component";
+import styled from "styled-components";
+
+const RestaurantList = styled(FlatList).attrs({
+	contentContainerStyle: {
+		padding: 16,
+	},
+})``;
 
 const RestaurantScreen = () => {
 	return (
-		<SafeArea>
+		<SafeAreas>
 			<SearchContainer>
 				<Searchbar />
 			</SearchContainer>
-			<FlatList
+			<RestaurantList
 				data={[
 					{ name: 1 },
 					{ name: 2 },
@@ -40,7 +48,7 @@ const RestaurantScreen = () => {
 				keyExtractor={(item) => item.name}
 				contentContainerStyle={{ padding: 16 }}
 			/>
-		</SafeArea>
+		</SafeAreas>
 	);
 };
 

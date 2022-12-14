@@ -4,7 +4,7 @@ import Spacer from './spacer/Spacer'
 // import FavouriteComponet from './favourites/FavouriteComponent'
 // import FavouriteBar from './favourites/FavouriteBar'
 // import CompactRestaurant from './restaurant/CompactRestaurant'
-// import SafeArea from './utility/SafeArea'
+import SafeAreas from './utility/SafeAreas'
 
 export {
   Typography,
@@ -13,5 +13,5 @@ export {
   // FavouriteComponet,
   // FavouriteBar,
   // CompactRestaurant,
-  // SafeArea
+  SafeAreas
 }
