@@ -3,7 +3,7 @@ import { Text, View, SafeAreaView, StyleSheet } from "react-native";
 import {RestaurantInfoCard, RestaurantScreen} from './src/features'
 import { ThemeProvider } from "styled-components/native";
 
-import { theme } from "./src/infrastructure";
+import { theme } from "./src/infrastructure/theme";
 import {
 	useFonts as useOswald,
 	Oswald_400Regular,

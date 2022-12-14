@@ -7,11 +7,9 @@ import { Icon } from "react-native-elements";
 // import { SvgXml } from "react-native-svg";
 
 const Title = styled(Text)`
-	${'' /* font-family: ${(props) => props.theme.fonts.body}; */}
-	${'' /* padding: ${(props) => props.theme.space[3]}; */}
-	padding:16px
-	color: red;
-	font-family: "Oswald_400Regular";
+	font-family: ${(props) => props.theme.fonts.body};
+	padding: ${(props) => props.theme.space[3]};
+	color:${(props) => props.theme.colors.ui.primary }
 `;
 
 const RestaurantCard = styled(Card)`
