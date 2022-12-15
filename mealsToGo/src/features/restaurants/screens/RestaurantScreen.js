@@ -1,7 +1,8 @@
-import {FlatList, StatusBar } from "react-native";
+import {FlatList, StatusBar , View } from "react-native";
 import React, {useContext} from "react";
 import { Searchbar } from "react-native-paper";
 import { Spacer } from "../../../component";
+import {ActivityIndicator,Colors} from "react-native-paper"
 
 import RestaurantInfoCard from "../component/RestaurantInfoCard";
 import {  SearchContainer  } from "./Styles";
@@ -15,30 +16,45 @@ const RestaurantList = styled(FlatList).attrs({
 	},
 })``;
 
+const Loading = styled(ActivityIndicator)`
+  margin-left:-25px
+`;
+const loadingContainer = styled(View)`
+	position: absolute;
+	top: 50%;
+	left: 50%;
+`;
+
 const RestaurantScreen = () => {
 	const {restaurants , error , isLoading } = useContext(RestaurantContext)
 	console.log(restaurants)
 	return (
 		<SafeAreas>
-			<SearchContainer>
-				<Searchbar />
-			</SearchContainer>
+			{isLoading ? (
+				<View style={{position:'absolute' , top:"50%" , left:"50%"}} >
+					<Loading size={50} animation={true} />
+				</View>
+			) : (
+				<>
+					<SearchContainer>
+						<Searchbar />
+					</SearchContainer>
 
-			{/* rendering list of restaurant Card */}
-			<RestaurantList
-				data={
-					restaurants
-				}
-				renderItem={({item}) => {
-					console.log(item)
-					return (
-					<Spacer position="bottom" size="large">
-						<RestaurantInfoCard restaurant={item} />
-					</Spacer>
-				)}}
-				keyExtractor={(item) => item.name}
-				contentContainerStyle={{ padding: 16 }}
-			/>
+					<RestaurantList
+						data={restaurants}
+						renderItem={({ item }) => {
+							console.log(item);
+							return (
+								<Spacer position="bottom" size="large">
+									<RestaurantInfoCard restaurant={item} />
+								</Spacer>
+							);
+						}}
+						keyExtractor={(item) => item.name}
+						contentContainerStyle={{ padding: 16 }}
+					/>
+				</>
+			)}
 		</SafeAreas>
 	);
 };
