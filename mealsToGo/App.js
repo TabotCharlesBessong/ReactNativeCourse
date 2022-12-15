@@ -13,6 +13,7 @@ import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 import { SafeAreas } from "./src/component";
 import { Ionicons } from "@expo/vector-icons";
 import { RestaurantContextProvider } from "./src/services/restaurant/restaurantContext";
+import { LocationContextProvider } from "./src/services/location/locationContext";
 
 // import { SafeArea } from "./src/components/utility/safe-area.component";
 
@@ -61,21 +62,23 @@ export default function App() {
   return (
 		<>
 			<ThemeProvider theme={theme}>
-				<RestaurantContextProvider>
-					<NavigationContainer>
-						<Tab.Navigator
-							screenOptions={createScreenOptions}
-							tabBarOptions={{
-								activeTintColor: "tomato",
-								inactiveTintColor: "gray",
-							}}
-						>
-							<Tab.Screen name="Restaurants" component={RestaurantScreen} />
-							<Tab.Screen name="Map" component={Map} />
-							<Tab.Screen name="Settings" component={Settings} />
-						</Tab.Navigator>
-					</NavigationContainer>
-				</RestaurantContextProvider>
+				<LocationContextProvider>
+					<RestaurantContextProvider>
+						<NavigationContainer>
+							<Tab.Navigator
+								screenOptions={createScreenOptions}
+								tabBarOptions={{
+									activeTintColor: "tomato",
+									inactiveTintColor: "gray",
+								}}
+							>
+								<Tab.Screen name="Restaurants" component={RestaurantScreen} />
+								<Tab.Screen name="Map" component={Map} />
+								<Tab.Screen name="Settings" component={Settings} />
+							</Tab.Navigator>
+						</NavigationContainer>
+					</RestaurantContextProvider>
+				</LocationContextProvider>
 			</ThemeProvider>
 			<ExpoStatusBar style="auto" />
 		</>
