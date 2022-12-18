@@ -1,4 +1,4 @@
-import {FlatList, StatusBar , View } from "react-native";
+import {FlatList, TouchableOpacity , View } from "react-native";
 import React, {useContext} from "react";
 import {ActivityIndicator,Colors} from "react-native-paper"
 
@@ -23,7 +23,7 @@ const loadingContainer = styled(View)`
 	left: 50%;
 `;
 
-const RestaurantScreen = () => {
+const RestaurantScreen = ({navigation}) => {
 	const {restaurants , error , isLoading } = useContext(RestaurantContext)
 	console.log(restaurants)
 	return (
@@ -41,9 +41,11 @@ const RestaurantScreen = () => {
 						renderItem={({ item }) => {
 							console.log(item);
 							return (
-								<Spacer position="bottom" size="large">
-									<RestaurantInfoCard restaurant={item} />
-								</Spacer>
+								<TouchableOpacity onPress={() => navigation.navigate("RestaurantDetail") } >
+									<Spacer position="bottom" size="large">
+										<RestaurantInfoCard restaurant={item} />
+									</Spacer>
+								</TouchableOpacity>
 							);
 						}}
 						keyExtractor={(item) => item.name}
