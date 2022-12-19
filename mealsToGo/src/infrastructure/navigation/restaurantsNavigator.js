@@ -16,3 +16,7 @@ const RestaurantsNavigator = () => {
 }
 
 export default RestaurantsNavigator
+
+// RestaurantNavigator.defaultNavigationOptions = {
+// 	headerShown:false
+// }
