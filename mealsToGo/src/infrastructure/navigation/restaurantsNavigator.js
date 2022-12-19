@@ -12,6 +12,7 @@ const RestaurantsNavigator = () => {
 			<RestaurantsStack.Screen name="RestaurantDetail" component={() => {RestaurantDetails}} />
 		</RestaurantsStack.Navigator>
 	);
+	
 }
 
 export default RestaurantsNavigator
