@@ -4,9 +4,12 @@ import React from 'react'
 import {data} from '../constant/data'
 import { Icon } from 'react-native-elements'
 import tw from 'tailwind-react-native-classnames'
+import { useNavigation } from '@react-navigation/native'
 
 
 const NavOptions = () => {
+
+  const navigation = useNavigation()
   const navOptions = data.navOptions
   console.log(navOptions,'navOptions')
   return (
@@ -16,7 +19,7 @@ const NavOptions = () => {
     horizontal
     renderItem={({item}) => {
       return (
-				<TouchableOpacity style={tw`p-2 pl-6 pb-8 pt-4 bg-gray-200 w-40 m-2`} >
+				<TouchableOpacity onPress={() => navigation.navigate(item.screen)} style={tw`p-2 pl-6 pb-8 pt-4 bg-gray-200 w-40 m-2`} >
 					<View style={{ flex: 1 }}>
 						<Image
 							style={{ width: 120, height: 120, resizeMode: "contain" }}
