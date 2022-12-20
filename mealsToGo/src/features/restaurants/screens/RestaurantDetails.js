@@ -13,6 +13,7 @@ const RestaurantDetails = ({route}) => {
   const {restaurant} = route.params
   return (
 		<SafeAreas>
+		  <RestaurantInfoCard restaurant={restaurant} />
 			<ScrollView>
 				<List.Accordion
 					title="Breakfast"
