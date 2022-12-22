@@ -6,11 +6,11 @@ import {LocationContext} from '../services/location/locationContext'
 
 export const Search = () => {
 	const {keyword,search} = useContext(LocationContext)
-	const [searchKeyword, setSearchKeyword] = useState('')
+	const [searchKeyword, setSearchKeyword] = useState(keyword)
 
 	useEffect(()=>{
     search(searchKeyword)
-	},[])
+	},[keyword])
 
   const locationContext = useContext(LocationContext)
   return (

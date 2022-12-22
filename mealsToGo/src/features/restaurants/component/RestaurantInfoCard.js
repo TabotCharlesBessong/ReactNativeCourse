@@ -54,7 +54,7 @@ const RestaurantInfoCard = ({ restaurant = {} }) => {
 							{isOpenNow && (
 								<IconE
 									name="star"
-									size={50}
+									size={20}
 									color="#373647"
 									onPress={() => {
 										Alert.alert("Want to take ride downward");
