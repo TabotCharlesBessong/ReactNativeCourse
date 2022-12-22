@@ -53,7 +53,7 @@ const RestaurantInfoCard = ({ restaurant = {} }) => {
 						<Spacer variant="left.large">
 							{isOpenNow && (
 								<IconE
-									name="restaurant_menu"
+									name="star"
 									size={50}
 									color="#373647"
 									onPress={() => {
