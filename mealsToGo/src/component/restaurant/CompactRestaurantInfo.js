@@ -25,9 +25,9 @@ const CompactWebView = styled(WebView)`
 
 const isAndroid = Platform.OS === 'android'
 
-const CompactRestaurantInfo = () => {
+const CompactRestaurantInfo = ({restaurant,isMap}) => {
 
-  const Image = isAndroid ? CompactWebView : CompactImage
+  const Image = isAndroid && isMap ? CompactWebView : CompactImage
   return (
     <Item>
       <Image

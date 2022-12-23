@@ -10,6 +10,7 @@ const MyText = styles.Text`
 const MapCallout = ({restaurant}) =>{
   return(
     <CompactRestaurantInfo
+      isMap
       restaurant={restaurant}
      />
   )
