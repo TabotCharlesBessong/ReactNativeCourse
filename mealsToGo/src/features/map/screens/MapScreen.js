@@ -36,16 +36,17 @@ const MapScreen = () => {
 			>
         {
 					restaurants.map((restaurant)=> {
-						return  null
-						{/* (
+						return  
+						(
 							<MapView.Marker
+							key={restaurant.name}
+							title={restaurant.name}
 							coordinate={{
-								longitude
+								longitude:restaurant.geometry.location.lng,
+								latitude:restaurant.geometry.location.lat
 							}}
-							>
-
-							</MapView.Marker>
-						) */}
+							/>
+						)
 					})
 				}
 			</Map>

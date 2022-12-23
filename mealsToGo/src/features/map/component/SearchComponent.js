@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 // import {SearchContainer} from '../../../features/restaurants/screens/Styles'
 import { Searchbar } from "react-native-paper";
+import styled from 'styled-components/native'
 import { LocationContext } from "../../../services/location/locationContext";
 
 export const SearchContainer = styled.View`
