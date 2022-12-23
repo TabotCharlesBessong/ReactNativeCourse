@@ -8,6 +8,7 @@ import {
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 import { RestaurantContextProvider } from "./src/services/restaurant/restaurantContext";
 import { LocationContextProvider } from "./src/services/location/locationContext";
+import { FavouritesContextProvider } from "./src/services/favourites/favouritesContext";
 import { Navigation } from "./src/infrastructure/navigation";
 
 // import { SafeArea } from "./src/components/utility/safe-area.component";
@@ -31,11 +32,13 @@ export default function App() {
   return (
 		<>
 			<ThemeProvider theme={theme}>
-				<LocationContextProvider>
-					<RestaurantContextProvider>
-						<Navigation/>
-					</RestaurantContextProvider>
-				</LocationContextProvider>
+			  <FavouritesContextProvider>
+					<LocationContextProvider>
+						<RestaurantContextProvider>
+							<Navigation/>
+						</RestaurantContextProvider>
+					</LocationContextProvider>
+				</FavouritesContextProvider>
 			</ThemeProvider>
 			<ExpoStatusBar style="auto" />
 		</>

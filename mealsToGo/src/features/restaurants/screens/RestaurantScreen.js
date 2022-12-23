@@ -6,6 +6,7 @@ import RestaurantInfoCard from "../component/RestaurantInfoCard";
 import { SafeAreas, Spacer } from "../../../component";
 import styled from "styled-components";
 import { RestaurantContext } from "../../../services/restaurant/restaurantContext";
+import { FavouritesContext } from "../../../services/favourites/favouritesContext";
 import {Search} from '../../index'
 
 const RestaurantList = styled(FlatList).attrs({
@@ -24,7 +25,8 @@ const loadingContainer = styled(View)`
 `;
 
 const RestaurantScreen = ({navigation}) => {
-	const {restaurants , error , isLoading } = useContext(RestaurantContext)
+	const {restaurants  , isLoading } = useContext(RestaurantContext)
+	const {favourites } = useContext(FavouritesContext)
 	console.log(restaurants)
 	return (
 		<SafeAreas>
