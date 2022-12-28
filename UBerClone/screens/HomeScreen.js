@@ -3,7 +3,7 @@ import React from 'react'
 import tw from 'tailwind-react-native-classnames'
 import NavOptions from '../components/NavOptions';
 import {GooglePlacesAutoComplete} from 'react-native-google-places-autocomplete'
-import {MAP_URL} from "@env"
+// import {MAP_URL} from "@env"
 
 const HomeScreen = () => {
   return (
