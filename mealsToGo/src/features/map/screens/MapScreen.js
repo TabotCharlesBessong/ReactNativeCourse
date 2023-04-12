@@ -1,5 +1,5 @@
 
-import React , {useContext} from 'react'
+import React , {useContext,useState} from 'react'
 import MapView from 'react-native-maps'
 import styled from 'styled-components/native'
 import SearchComponent from '../component/SearchComponent'
