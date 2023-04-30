@@ -22,7 +22,7 @@ const FavouritesComponent = ({restaurant}) => {
     onPress = {() => !isFavourite ? addToFavourites(restaurant) : removeFromFavourites(restaurant)  }
     >
       <AntDesign 
-        name={isFavourite ? "heart" : "heart-outline" }
+        name={isFavourite ? "heart" : "" }
         size={24}
         color= {isFavourite ? "red" : "white" }
       />

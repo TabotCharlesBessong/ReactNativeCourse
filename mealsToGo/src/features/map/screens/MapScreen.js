@@ -18,6 +18,9 @@ const MapScreen = ({navigation}) => {
 	const { restaurants = [] } = useContext(RestaurantContext);
 	const [latDelta,setLatDelta] = useState(0)
 	const {lat,lng,viewport} = location
+	console.log(viewport.northeast,'northeast')
+	console.log(viewport.northeast.lat,'northeast latitude')
+	console.log({location})
 
 	useEffect(()=>{
     const northeastLat = viewport.norteast.lat
@@ -37,21 +40,21 @@ const MapScreen = ({navigation}) => {
 			>
         {
 					restaurants.map((restaurant)=> {
-						return  
-						(
-							<MapView.Marker
-							key={restaurant.name}
-							title={restaurant.name}
-							coordinate={{
-								longitude:restaurant.geometry.location.lng,
-								latitude:restaurant.geometry.location.lat
-							}}
-							>
-								<MapView.Callout onPress={() => navigation.navigate("RestaurantDetail",{restaurant}) } >
-								  <MapCallout restaurant={restaurant} />
-								</MapView.Callout>
-							</MapView.Marker>
-						)
+						return  null
+						// (
+						// 	<MapView.Marker
+						// 	key={restaurant.name}
+						// 	title={restaurant.name}
+						// 	coordinate={{
+						// 		longitude:restaurant.geometry.location.lng,
+						// 		latitude:restaurant.geometry.location.lat
+						// 	}}
+						// 	>
+						// 		<MapView.Callout onPress={() => navigation.navigate("RestaurantDetail",{restaurant}) } >
+						// 		  <MapCallout restaurant={restaurant} />
+						// 		</MapView.Callout>
+						// 	</MapView.Marker>
+						// )
 					})
 				}
 			</Map>
