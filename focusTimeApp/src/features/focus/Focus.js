@@ -3,7 +3,7 @@ import { TextInput } from "react-native-paper";
 import { View, StyleSheet, Text, FlatList, SafeAreaView } from "react-native";
 
 import { RoundedButton } from "../../components/RoundedButton";
-import { fontSizes } from "../../utils/sizes";
+import { fontSizes } from "../utils/sizes";
 
 export const Focus = ({ addSubject, focusHistory }) => {
   const [focusItem, setFocusItem] = useState(null);

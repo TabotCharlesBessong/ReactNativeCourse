@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-import { fontSizes, paddingSizes } from "../../utils/sizes";
+import { fontSizes, paddingSizes } from "../utils/sizes";
 import { RoundedButton } from "../../components/RoundedButton";
 
 export const FocusHistory = ({ focusHistory, setFocusHistory }) => {
