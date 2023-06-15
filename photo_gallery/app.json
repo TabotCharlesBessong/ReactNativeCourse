@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "digi_tesksi",
-    "slug": "digi_tesksi",
+    "name": "photo_gallery",
+    "slug": "photo_gallery",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
     ]
   },
-  "name": "digi_tesksi"
+  "name": "photo_gallery"
 }

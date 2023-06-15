@@ -9,12 +9,12 @@ import TabNavigator from "./navigation/BottomNavigator";
 const App = () => {
   return (
     <View style={styles.container} >
-      {/* <SafeAreaProvider>
+      <SafeAreaProvider>
       <NavigationContainer>
         <TabNavigator />
       </NavigationContainer>
-    </SafeAreaProvider> */}
-    <HomePage/>
+    </SafeAreaProvider>
+    {/* <HomePage/> */}
     </View>
   );
 };
