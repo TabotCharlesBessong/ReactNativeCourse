@@ -1,13 +1,15 @@
 import { View, Text } from 'react-native'
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import PageContainer from '../components/PageContainer'
 import { COLORS, FONTS } from '../constants'
 import OTPTextInput from 'react-native-otp-textinput'
 import Button from '../components/Button'
 import PageTitle from '../components/PageTitle'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const Verification = ({ navigation }) => {
+    const [phoneNumber, setPhoneNumber] = useState('')
     const otpInput = useRef(null)
 
     const clearText = () => {
@@ -17,6 +19,21 @@ const Verification = ({ navigation }) => {
     const setText = () => {
         otpInput.current.setValue('1234')
     }
+
+    useEffect(() => {
+        const getPhoneNumberFromStorage = async () => {
+            try {
+                const value = await AsyncStorage.getItem('phoneNumber')
+                if (value !== null) {
+                    setPhoneNumber(value)
+                }
+            } catch (e) {
+                console.log('Error getting phone number from local storage:', e)
+            }
+        }
+
+        getPhoneNumberFromStorage()
+    }, [])
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <PageContainer>
@@ -38,7 +55,7 @@ const Verification = ({ navigation }) => {
                     </Text>
                     <Text style={{ ...FONTS.body3, textAlign: 'center' }}>
                         {' '}
-                        to +62 1309 - 1710 - 1920
+                        to {phoneNumber}
                     </Text>
                     <View style={{ marginVertical: 60 }}>
                         <OTPTextInput

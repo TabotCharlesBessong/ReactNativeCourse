@@ -14,11 +14,17 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { images, COLORS, SIZES, FONTS } from '../constants'
 import Button from '../components/Button'
 import PageTitle from '../components/PageTitle'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export default function PhoneNumber({ navigation }) {
     const [areas, setAreas] = useState([])
     const [selectedArea, setSelectedArea] = useState(null)
     const [modalVisible, setModalVisible] = useState(false)
+    const [phoneNumber, setPhoneNumber] = useState('')
+
+    const handlePhoneNumberChange = (value) => {
+        setPhoneNumber(value)
+    }
 
     // fectch codes from rescountries api
 
@@ -46,6 +52,18 @@ export default function PhoneNumber({ navigation }) {
                 }
             })
     }, [])
+
+    useEffect(() => {
+        const savePhoneNumberToStorage = async () => {
+            try {
+                await AsyncStorage.setItem('phoneNumber', phoneNumber)
+            } catch (e) {
+                console.log('Error saving phone number to local storage:', e)
+            }
+        }
+
+        savePhoneNumberToStorage()
+    }, [phoneNumber])
 
     // render countries codes modal
     function renderAreasCodesModal() {
@@ -119,128 +137,131 @@ export default function PhoneNumber({ navigation }) {
     }
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
-            <PageTitle onPress={() => navigation.navigate('Walkthrough')} />
-            <ScrollView>
-                <View style={{ flex: 1, alignItems: 'center' }}>
-                    <Text
-                        style={{
-                            ...FONTS.h2,
-                            color: COLORS.black,
-                            marginTop: 80,
-                        }}
-                    >
-                        Enter Your Phone Number
-                    </Text>
-                    <Text
-                        style={{
-                            ...FONTS.body3,
-                            textAlign: 'center',
-                            marginVertical: 4,
-                        }}
-                    >
-                        Please confirm your country code and enter your phone
-                        number
-                    </Text>
+            <PageTitle
+                title="Phone Registration"
+                onPress={() => navigation.navigate('Walkthrough')}
+            />
+            {/* <ScrollView> */}
+            <View
+                style={{ flex: 1, alignItems: 'center', paddingHorizontal: 22 }}
+            >
+                <Text
+                    style={{
+                        ...FONTS.h2,
+                        color: COLORS.black,
+                        marginTop: 80,
+                    }}
+                >
+                    Enter Your Phone Number
+                </Text>
+                <Text
+                    style={{
+                        ...FONTS.body3,
+                        textAlign: 'center',
+                        marginVertical: 8,
+                    }}
+                >
+                    Please confirm your country code and enter your phone number
+                </Text>
+                <View
+                    style={{
+                        width: '100%',
+                        paddingVertical: 60,
+                    }}
+                >
                     <View
                         style={{
-                            width: '100%',
-                            paddingHorizontal: 22,
-                            paddingVertical: 60,
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            marginBottom: 88,
                         }}
                     >
-                        <View
+                        <TouchableOpacity
                             style={{
+                                width: 100,
+                                height: 48,
+                                marginHorizontal: 5,
+                                borderRadius: SIZES.padding,
+                                borderColor: COLORS.secondaryWhite,
+                                borderWidth: 1,
+                                backgroundColor: COLORS.secondaryWhite,
                                 flexDirection: 'row',
-                                alignItems: 'center',
-                                marginBottom: 88,
+                                fontSize: 12,
                             }}
+                            onPress={() => setModalVisible(true)}
                         >
-                            <TouchableOpacity
+                            <View style={{ justifyContent: 'center' }}>
+                                <Image
+                                    source={images.down}
+                                    style={{
+                                        width: 10,
+                                        height: 10,
+                                        tintColor: COLORS.black,
+                                    }}
+                                />
+                            </View>
+
+                            <View
                                 style={{
-                                    width: 100,
-                                    height: 48,
-                                    marginHorizontal: 5,
-                                    borderRadius: SIZES.padding,
-                                    borderColor: COLORS.secondaryWhite,
-                                    borderWidth: 1,
-                                    backgroundColor: COLORS.secondaryWhite,
-                                    flexDirection: 'row',
-                                    fontSize: 12,
+                                    justifyContent: 'center',
+                                    marginLeft: 5,
                                 }}
-                                onPress={() => setModalVisible(true)}
                             >
-                                <View style={{ justifyContent: 'center' }}>
-                                    <Image
-                                        source={images.down}
-                                        style={{
-                                            width: 10,
-                                            height: 10,
-                                            tintColor: COLORS.black,
-                                        }}
-                                    />
-                                </View>
-
-                                <View
+                                <Image
+                                    source={{ uri: selectedArea?.flag }}
+                                    resizeMode="contain"
                                     style={{
-                                        justifyContent: 'center',
-                                        marginLeft: 5,
+                                        width: 30,
+                                        height: 30,
                                     }}
-                                >
-                                    <Image
-                                        source={{ uri: selectedArea?.flag }}
-                                        resizeMode="contain"
-                                        style={{
-                                            width: 30,
-                                            height: 30,
-                                        }}
-                                    />
-                                </View>
+                                />
+                            </View>
 
-                                <View
-                                    style={{
-                                        justifyContent: 'center',
-                                        marginLeft: 5,
-                                    }}
-                                >
-                                    <Text
-                                        style={{ color: '#111', fontSize: 12 }}
-                                    >
-                                        {selectedArea?.callingCode}
-                                    </Text>
-                                </View>
-                            </TouchableOpacity>
-                            {/* Phone Number Text Input */}
-                            <TextInput
+                            <View
                                 style={{
-                                    flex: 1,
-                                    marginVertical: 10,
-                                    borderColor: '#111',
-                                    backgroundColor: COLORS.secondaryWhite,
-                                    borderRadius: SIZES.padding,
-                                    paddingLeft: SIZES.padding,
-                                    height: 48,
-                                    fontSize: 12,
-                                    color: '#111',
+                                    justifyContent: 'center',
+                                    marginLeft: 5,
                                 }}
-                                placeholder="Enter your phone number"
-                                placeholderTextColor="#111"
-                                selectionColor="#111"
-                                keyboardType="numeric"
-                            />
-                        </View>
-                        <Button
-                            title="Submit"
-                            onPress={() => navigation.navigate('Verification')}
+                            >
+                                <Text style={{ color: '#111', fontSize: 12 }}>
+                                    {selectedArea?.callingCode}
+                                </Text>
+                            </View>
+                        </TouchableOpacity>
+                        {/* Phone Number Text Input */}
+                        <TextInput
                             style={{
-                                width: '100%',
-                                paddingVertical: 12,
-                                marginBottom: 48,
+                                flex: 1,
+                                marginVertical: 10,
+                                borderColor: '#111',
+                                backgroundColor: COLORS.secondaryWhite,
+                                borderRadius: SIZES.padding,
+                                paddingLeft: SIZES.padding,
+                                height: 48,
+                                fontSize: 16,
+                                color: '#111',
                             }}
+                            placeholder="Enter your phone number"
+                            placeholderTextColor="#111"
+                            selectionColor="#111"
+                            keyboardType="numeric"
+                            value={phoneNumber}
+                            onChangeText={handlePhoneNumberChange}
                         />
                     </View>
+                    <Button
+                        title="Submit"
+                        onPress={() => navigation.navigate('Verification')}
+                        style={{
+                            width: '100%',
+                            paddingVertical: 12,
+                            marginBottom: 48,
+                        }}
+                    />
                 </View>
-                {renderAreasCodesModal()}
-            </ScrollView>
+            </View>
+            {renderAreasCodesModal()}
+            {/* </ScrollView> */}
         </SafeAreaView>
     )
 }

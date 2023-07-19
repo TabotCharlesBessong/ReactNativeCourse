@@ -15,7 +15,8 @@ export default function Walkthrough({ navigation }) {
                         alignItems: 'center',
                         justifyContent: 'space-between',
                         flexDirection: 'column',
-                        marginHorizontal: 22,
+                        // marginHorizontal: 22,
+                        paddingHorizontal: 22,
                     }}
                 >
                     <Image
