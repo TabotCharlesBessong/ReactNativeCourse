@@ -12,18 +12,12 @@ import PageContainer from '../components/PageContainer'
 import { MaterialCommunityIcons, AntDesign, Ionicons } from '@expo/vector-icons'
 import { FONTS, COLORS } from '../constants'
 import { contacts } from '../constants/data'
+import { handleSearch } from '../utils/search'
 
 const Chats = ({ navigation }) => {
     const [search, setSearch] = useState('')
     const [filteredUsers, setFilteredUsers] = useState(contacts)
 
-    const handleSearch = (text) => {
-        setSearch(text)
-        const filteredData = contacts.filter((user) =>
-            user.userName.toLowerCase().includes(text.toLowerCase())
-        )
-        setFilteredUsers(filteredData)
-    }
 
     const renderItem = ({ item, index }) => (
         <TouchableOpacity

@@ -12,18 +12,11 @@ import PageContainer from '../components/PageContainer'
 import { COLORS, FONTS } from '../constants'
 import { AntDesign, Ionicons } from '@expo/vector-icons'
 import { contacts } from '../constants/data'
+import { handleSearch } from '../utils/search'
 
 const Contacts = ({ navigation }) => {
     const [search, setSearch] = useState('')
     const [filteredUsers, setFilteredUsers] = useState(contacts)
-
-    const handleSearch = (text) => {
-        setSearch(text)
-        const filteredData = contacts.filter((user) =>
-            user.userName.toLowerCase().includes(text.toLowerCase())
-        )
-        setFilteredUsers(filteredData)
-    }
 
     const renderItem = ({ item, index }) => (
         <TouchableOpacity
@@ -55,7 +48,7 @@ const Contacts = ({ navigation }) => {
                     marginRight: 22,
                 }}
             >
-                {item.isOnline && item.isOnline == true && (
+                {item.isOnline && (
                     <View
                         style={{
                             height: 14,
@@ -76,9 +69,9 @@ const Contacts = ({ navigation }) => {
                     source={item.userImg}
                     resizeMode="contain"
                     style={{
-                        height: 50,
-                        width: 50,
-                        borderRadius: 25,
+                        height: 60,
+                        width: 60,
+                        borderRadius: 30,
                     }}
                 />
             </View>

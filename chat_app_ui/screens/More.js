@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import PageContainer from '../components/PageContainer'
 import { COLORS, FONTS } from '../constants'
@@ -10,8 +10,31 @@ import {
     Ionicons,
     Entypo,
 } from '@expo/vector-icons'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { getPhoneNumberFromStorage } from '../utils/getPhone'
 
 const More = () => {
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [phoneNumber, setPhoneNumber] = useState('')
+
+    useEffect(() => {
+        const fetchValues = async () => {
+            try {
+                const firstNameValue = await AsyncStorage.getItem('firstName')
+                const lastNameValue = await AsyncStorage.getItem('lastName')
+                setFirstName(firstNameValue || '')
+                setLastName(lastNameValue || '')
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fetchValues()
+    }, [])
+    useEffect(() => {
+
+        getPhoneNumberFromStorage()
+    }, [])
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <PageContainer>
@@ -53,11 +76,11 @@ const More = () => {
                         }}
                     >
                         <Text style={{ ...FONTS.h4, marginVertical: 6 }}>
-                            Almayra Zamzamy
-                        </Text>
+                            {firstName + ' ' +lastName}
+                        </Text> 
                         <Text style={{ ...FONTS.body3, color: COLORS.gray }}>
                             {' '}
-                            + 62 - 1300 - 0000- 0000
+                            {phoneNumber}
                         </Text>
                     </View>
                     <TouchableOpacity

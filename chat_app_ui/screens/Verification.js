@@ -7,6 +7,7 @@ import OTPTextInput from 'react-native-otp-textinput'
 import Button from '../components/Button'
 import PageTitle from '../components/PageTitle'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { getPhoneNumberFromStorage } from '../utils/getPhone'
 
 const Verification = ({ navigation }) => {
     const [phoneNumber, setPhoneNumber] = useState('')
@@ -21,17 +22,6 @@ const Verification = ({ navigation }) => {
     }
 
     useEffect(() => {
-        const getPhoneNumberFromStorage = async () => {
-            try {
-                const value = await AsyncStorage.getItem('phoneNumber')
-                if (value !== null) {
-                    setPhoneNumber(value)
-                }
-            } catch (e) {
-                console.log('Error getting phone number from local storage:', e)
-            }
-        }
-
         getPhoneNumberFromStorage()
     }, [])
     return (
