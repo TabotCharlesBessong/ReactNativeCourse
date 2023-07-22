@@ -22,10 +22,10 @@ const Welcome = ({ navigation }) => {
                             width: 100,
                             borderRadius: 20,
                             position: "absolute",
-                            top: 10,
+                            top: 60,
                             transform: [
                                 { translateX: 20 },
-                                { translateY: 50 },
+                                // { translateY: 50 },
                                 { rotate: "-15deg" }
                             ]
                         }}
@@ -38,12 +38,12 @@ const Welcome = ({ navigation }) => {
                             width: 100,
                             borderRadius: 20,
                             position: "absolute",
-                            top: -30,
-                            left: 100,
+                            top: 20,
+                            left: 150,
                             transform: [
-                                { translateX: 50 },
-                                { translateY: 50 },
-                                { rotate: "-5deg" }
+                                // { translateX: 50 },
+                                // { translateY: 50 },
+                                { rotate: "25deg" }
                             ]
                         }}
                     />
