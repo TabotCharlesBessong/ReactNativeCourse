@@ -44,7 +44,10 @@ export default function App() {
     return null
   }
   return (
-    <Navigation onLayout={onLayout} />     
+    <>
+    <Navigation onLayout={onLayout} />    
+    </>
+ 
   );
 }
 
