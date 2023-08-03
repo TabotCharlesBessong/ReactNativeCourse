@@ -5,10 +5,10 @@ import { View } from "react-native";
 
 const Stack = createStackNavigator();
 
-const Navigation = () => {
+const Navigation = ({onLayout}) => {
   return (
       <NavigationContainer>
-        <View style={{ flex: 1 }}>
+        <View onLayout={onLayout} style={{ flex: 1 }}>
           <Stack.Navigator>
             <Stack.Group>
               <Stack.Screen
