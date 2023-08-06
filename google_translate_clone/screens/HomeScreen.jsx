@@ -12,6 +12,7 @@ import colors from "../constant/colors";
 
 const HomeScreen = ({ navigation }) => {
   const [enteredtext, setEnteredtext] = useState("");
+  const [resulttext, setResulttext] = useState("hola mi amore");
   return (
     <View style={styles.container}>
       {/* Building language selector */}
@@ -54,6 +55,27 @@ const HomeScreen = ({ navigation }) => {
             color={enteredtext !== "" ? colors.primary : colors.primaryDisabled}
           />
         </TouchableOpacity>
+      </View>
+
+      <View style={styles.resultContainer}>
+        <Text style={styles.resultText}>{resulttext}</Text>
+        <TouchableOpacity
+          style={styles.iconContainer}
+          disabled={resulttext === ""}
+          onPress={() => console.log("Ouch i was clicked")}
+        >
+          <Ionicons
+            name="copy"
+            size={24}
+            color={
+              resulttext !== "" ? colors.textColor : colors.textColorDisabled
+            }
+          />
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.historyContainer} >
+
       </View>
     </View>
   );
