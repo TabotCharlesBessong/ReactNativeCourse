@@ -32,7 +32,15 @@ const Navigation = ({onLayout}) => {
             </Stack.Group>
 
             <Stack.Group screenOptions={{
-              presentation:'modal'
+              presentation:'modal',
+              headerStyle:{
+                backgroundColor:'white'
+              },
+              headerTitleStyle:{
+                color:colors.textColor,
+                fontFamily:'medium'
+              },
+              headerShadowVisible:false
             }} >
               <Stack.Screen
                 name="LanguageSelector"

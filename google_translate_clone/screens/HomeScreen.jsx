@@ -19,7 +19,7 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.languageContainer}>
         <TouchableOpacity
           style={styles.languageOption}
-          onPress={() => navigation.navigate("LanguageSelector")}
+          onPress={() => navigation.navigate("LanguageSelector",{title:'Translate from'})}
         >
           <Text style={styles.languageOptionText}>English</Text>
         </TouchableOpacity>
@@ -30,7 +30,7 @@ const HomeScreen = ({ navigation }) => {
 
         <TouchableOpacity
           style={styles.languageOption}
-          onPress={() => navigation.navigate("LanguageSelector")}
+          onPress={() => navigation.navigate("LanguageSelector",{title:'Translate to'})}
         >
           <Text style={styles.languageOptionText}>French</Text>
         </TouchableOpacity>
