@@ -19,7 +19,7 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.languageContainer}>
         <TouchableOpacity
           style={styles.languageOption}
-          onPress={() => console.log("Ouch i was clicked")}
+          onPress={() => navigation.navigate("LanguageSelector")}
         >
           <Text style={styles.languageOptionText}>English</Text>
         </TouchableOpacity>
@@ -30,7 +30,7 @@ const HomeScreen = ({ navigation }) => {
 
         <TouchableOpacity
           style={styles.languageOption}
-          onPress={() => console.log("Ouch i was clicked")}
+          onPress={() => navigation.navigate("LanguageSelector")}
         >
           <Text style={styles.languageOptionText}>French</Text>
         </TouchableOpacity>
