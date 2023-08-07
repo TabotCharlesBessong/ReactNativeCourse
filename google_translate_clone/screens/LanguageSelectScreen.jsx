@@ -1,9 +1,11 @@
 
-import { StyleSheet, Text, View } from 'react-native'
+import { FlatList, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect } from 'react'
 import { HeaderButton, HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { Ionicons } from '@expo/vector-icons';
 import colors from '../constant/colors';
+import supportedLanguages from '../utils/supportedLanguages'
+import { LanguageItem } from '../components';
 
 const CustomHeaderButton = (props) => {
   return (
@@ -37,7 +39,16 @@ const LanguageSelectScreen = ({navigation,route}) => {
 
   return (
     <View style={styles.container} >
-      <Text>LanguageSelectScreen</Text>
+      <FlatList 
+        data={Object.keys(supportedLanguages)}
+        renderItem={(item) => {
+          const languageKey = item.item
+          const languageString = supportedLanguages[languageKey]
+          return (
+            <LanguageItem text={languageString} />
+          )
+        }}
+      />
     </View>
   )
 }
@@ -47,8 +58,6 @@ export default LanguageSelectScreen
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5FCFF',
   }
 })
