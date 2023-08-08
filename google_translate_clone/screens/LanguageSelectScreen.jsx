@@ -1,6 +1,6 @@
 
 import { FlatList, StyleSheet, Text, View } from 'react-native'
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { HeaderButton, HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { Ionicons } from '@expo/vector-icons';
 import colors from '../constant/colors';
@@ -37,6 +37,11 @@ const LanguageSelectScreen = ({navigation,route}) => {
     });
   }, [navigation]);
 
+  const onLanguageSelect = useCallback(itemKey => {
+    const dataKey = params.moode === 'to' ? 'languageTo' : 'languageFrom'
+    navigation.navigate('Home',{[dataKey] : itemKey})
+  },[params,navigation])
+
   return (
     <View style={styles.container} >
       <FlatList 
@@ -45,7 +50,7 @@ const LanguageSelectScreen = ({navigation,route}) => {
           const languageKey = item.item
           const languageString = supportedLanguages[languageKey]
           return (
-            <LanguageItem text={languageString} />
+            <LanguageItem onPress={onLanguageSelect} text={languageString} selected={languageKey === selected} />
           )
         }}
       />

@@ -6,22 +6,35 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import colors from "../constant/colors";
+import supportedLanguages from "../utils/supportedLanguages";
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({ navigation,route }) => {
+
+  const params = route.params || {}
   const [enteredtext, setEnteredtext] = useState("");
   const [resulttext, setResulttext] = useState("hola mi amore");
+  const [languageTo, setLanguageTo] = useState('fr')
+  const [languageFrom, setLanguageFrom] = useState('en')
+
+  useEffect(() => {
+    if (params.languageTo) {
+      setLanguageTo(params.languageTo)
+    }if (params.languageFrom) {
+      setLanguageFrom(params.languageFrom)
+    }
+  },[params.languageTo,params.languageFrom])
   return (
     <View style={styles.container}>
       {/* Building language selector */}
       <View style={styles.languageContainer}>
         <TouchableOpacity
           style={styles.languageOption}
-          onPress={() => navigation.navigate("LanguageSelector",{title:'Translate from'})}
+          onPress={() => navigation.navigate("LanguageSelector",{title:'Translate from',selected:languageFrom,mode:'from'})}
         >
-          <Text style={styles.languageOptionText}>English</Text>
+          <Text style={styles.languageOptionText}>{supportedLanguages[languageFrom]}</Text>
         </TouchableOpacity>
 
         <View style={styles.languageSelector}>
@@ -30,9 +43,9 @@ const HomeScreen = ({ navigation }) => {
 
         <TouchableOpacity
           style={styles.languageOption}
-          onPress={() => navigation.navigate("LanguageSelector",{title:'Translate to'})}
+          onPress={() => navigation.navigate("LanguageSelector",{title:'Translate to',selected:languageTo,mode:'to'})}
         >
-          <Text style={styles.languageOptionText}>French</Text>
+          <Text style={styles.languageOptionText}>{supportedLanguages[languageTo]}</Text>
         </TouchableOpacity>
       </View>
 
