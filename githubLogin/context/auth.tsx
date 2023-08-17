@@ -56,7 +56,7 @@ function useProtectedRoles(user: User) {
   const [hasNavigated, setHasNavigated] = useState(false);
 
   React.useEffect(() => {
-    if (!navigationState.key || hasNavigated) return;
+    if ( hasNavigated) return;
     const inAuthGroup = segment[0] === "[auth]";
 
     if (!user.uid && !inAuthGroup) {

@@ -4,7 +4,7 @@ import React from 'react'
 
 const signIn = ():JSX.Element => {
   return (
-    <View>
+    <View style={{flex:1,alignItems:'center',justifyContent:'center'}} >
       <Text>signIn</Text>
     </View>
   )
