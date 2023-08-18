@@ -1,8 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useFonts } from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen'
+import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
+import BottomTabNavigation from './navigation/BottomTabNavigation';
+import { Card } from './screens';
+
+const Stack = createNativeStackNavigator()
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -22,24 +26,16 @@ export default function App() {
 
   if(!fontsLoaded) return null
   return (
-    <View style={styles.container}>
-      <Text style={styles.textStyle} >Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen options={{
+          headerShown:false
+        }} name='BottomNavigation' component={BottomTabNavigation} />
+        <Stack.Screen options={{
+          headerShown:false
+        }} name='Card' component={Card} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  textStyle:{
-    fontFamily:'regular',
-    fontSize:20,
-    textAlign:'center',
-    paddingHorizontal:12
-  }
-});
