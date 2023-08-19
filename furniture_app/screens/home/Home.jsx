@@ -3,7 +3,7 @@ import { SafeAreaView, ScrollView, Text, TouchableOpacity, View } from 'react-na
 import React from 'react'
 import styles from './home.styles'
 import { Fontisto, Ionicons } from '@expo/vector-icons'
-import {Welcome} from '../../component'
+import {Carousel, Welcome} from '../../component'
 
 const Home = () => {
   return (
@@ -25,6 +25,7 @@ const Home = () => {
       </View>
       <ScrollView>
         <Welcome />
+        <Carousel/>
       </ScrollView>
     </SafeAreaView>
   )
