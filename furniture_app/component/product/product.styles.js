@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.medium,
     // backgroundColor:COLORS.secondary,
     // paddingBottom:60,
-    position: 'relative',
+    position: "relative",
   },
   imageContainer: {
     flex: 1,
@@ -41,13 +41,17 @@ const styles = StyleSheet.create({
   supplier: {
     fontFamily: "regular",
     fontSize: SIZES.small,
-    color:COLORS.gray
+    color: COLORS.gray,
   },
-  addBtn:{
-    position:'absolute',
+  addBtn: {
+    position: "absolute",
     bottom: SIZES.xSmall,
-    right:SIZES.xSmall
-  }
+    right: SIZES.xSmall,
+  },
+  productRowContainer: {
+    marginTop: SIZES.medium,
+    marginLeft: 12,
+  },
 });
 
 export default styles
