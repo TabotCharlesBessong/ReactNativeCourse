@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import styles from "./details.styles";
-import { Ionicons, SimpleLineIcons } from "@expo/vector-icons";
-import { COLORS } from "../../constants";
+import { Fontisto, Ionicons, MaterialCommunityIcons, SimpleLineIcons } from "@expo/vector-icons";
+import { COLORS, SIZES } from "../../constants";
 import images from "../../constants/images";
 
 const ProductDetails = ({ navigation }) => {
@@ -52,10 +52,34 @@ const ProductDetails = ({ navigation }) => {
           </View>
         </View>
 
-        <View style={styles.descriptionWrapper} >
-          <Text style={styles.description} >
-
+        <View style={styles.descriptionWrapper}>
+          <Text style={styles.description}>Description</Text>
+          <Text style={styles.descText}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi porro
+            neque unde magni!
           </Text>
+        </View>
+
+        <View style={{ marginBottom: SIZES.small }}>
+          <View style={styles.location}>
+            <View style={{ flexDirection: "row" }}>
+              <Ionicons name="location-outline" size={20} />
+              <Text>  Buea</Text>
+            </View>
+            <View style={{ flexDirection: "row" }}>
+              <MaterialCommunityIcons name="truck-delivery-outline" size={20} />
+              <Text>  Free delivery  </Text>
+            </View>
+          </View>
+        </View>
+
+        <View style={styles.cartRow} >
+          <TouchableOpacity style={styles.cartBtn} onPress={() => {}} >
+            <Text style={styles.cartTitle} >buy now</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.addToCart} >
+            <Fontisto name="shopping-bag" size={24} color={COLORS.lightWhite} />
+          </TouchableOpacity>
         </View>
       </View>
     </View>
