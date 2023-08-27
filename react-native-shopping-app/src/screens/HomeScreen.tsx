@@ -17,51 +17,13 @@ import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import CustomBackdrop from "../components/CustomBackdrop";
 import FilterView from "../components/FilterView";
 import { TabsStackScreenProps } from "../navigators/TabsNavigator";
+import data from "../constant/data";
 
-const CATEGORIES = [
-  "Clothing",
-  "Shoes",
-  "Accessories",
-  "Accessories 2",
-  "Accessories 3",
-  "Accessories 4",
-];
 
 const AVATAR_URL =
   "https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80";
 
-const MESONARY_LIST_DATA = [
-  {
-    imageUrl:
-      "https://images.unsplash.com/photo-1521577352947-9bb58764b69a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=986&q=80",
-    title: "PUMA Everyday Hussle",
-    price: 160,
-  },
-  {
-    imageUrl:
-      "https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-    title: "PUMA Everyday Hussle",
-    price: 180,
-  },
-  {
-    imageUrl:
-      "https://images.unsplash.com/photo-1556217477-d325251ece38?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1020&q=80",
-    title: "PUMA Everyday Hussle",
-    price: 200,
-  },
-  {
-    imageUrl:
-      "https://images.unsplash.com/photo-1554568218-0f1715e72254?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-    title: "PUMA Everyday Hussle",
-    price: 180,
-  },
-  {
-    imageUrl:
-      "https://images.unsplash.com/photo-1627225924765-552d49cf47ad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-    title: "PUMA Everyday Hussle",
-    price: 120,
-  },
-];
+
 
 const HomeScreen = ({ navigation }: TabsStackScreenProps<"Home">) => {
   const { colors } = useTheme();
@@ -101,7 +63,7 @@ const HomeScreen = ({ navigation }: TabsStackScreenProps<"Home">) => {
               }}
               numberOfLines={1}
             >
-              Hi, James 👋
+              Hi, James 👋👌
             </Text>
             <Text
               style={{ color: colors.text, opacity: 0.75 }}
@@ -117,7 +79,7 @@ const HomeScreen = ({ navigation }: TabsStackScreenProps<"Home">) => {
               alignItems: "center",
               justifyContent: "center",
               borderRadius: 52,
-              borderWidth: 1,
+              borderWidth: 2,
               borderColor: colors.border,
             }}
           >
@@ -228,9 +190,9 @@ const HomeScreen = ({ navigation }: TabsStackScreenProps<"Home">) => {
 
         {/* Categories Section */}
         <FlatList
-          data={CATEGORIES}
+          data={data.CATEGORIES}
           horizontal
-          showsHorizontalScrollIndicator={false}
+          showsHorizontalScrollIndicator={true}
           contentContainerStyle={{
             paddingHorizontal: 16,
             gap: 12,
@@ -266,15 +228,15 @@ const HomeScreen = ({ navigation }: TabsStackScreenProps<"Home">) => {
 
         {/* Mesonary */}
         <MasonryList
-          data={MESONARY_LIST_DATA}
+          data={data.MESONARY_LIST_DATA}
           numColumns={2}
           contentContainerStyle={{ paddingHorizontal: 12 }}
-          showsVerticalScrollIndicator={false}
+          showsVerticalScrollIndicator={true}
           renderItem={({ item, i }: any) => (
             <View style={{ padding: 6 }}>
               <View
                 style={{
-                  aspectRatio: i === 0 ? 1 : 2 / 3,
+                  aspectRatio: i === 0 ? 1 : i % 3 === 0 ? 3 / 4 : i % 2 === 0 ? 3 / 5 : 5 / 7,
                   position: "relative",
                   overflow: "hidden",
                   borderRadius: 24,

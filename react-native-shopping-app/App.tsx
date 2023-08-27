@@ -1,24 +1,24 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, useColorScheme } from "react-native";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import {
   DarkTheme,
   DefaultTheme,
   NavigationContainer,
   Theme,
 } from "@react-navigation/native";
-import RootNavigator from "./src/navigators/RootNavigator";
+import { StatusBar } from "expo-status-bar";
 import { useMemo } from "react";
+import { StyleSheet, useColorScheme } from "react-native";
 import "react-native-gesture-handler";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import RootNavigator from "./src/navigators/RootNavigator";
 
 export default function App() {
   const colorScheme = useColorScheme();
 
   const theme: Theme = useMemo(
     () =>
-      colorScheme === "dark"
+      colorScheme === "light"
         ? {
             ...DarkTheme,
             colors: {
@@ -47,7 +47,7 @@ export default function App() {
           <BottomSheetModalProvider>
             <RootNavigator />
           </BottomSheetModalProvider>
-          <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
+          <StatusBar style={colorScheme === "light" ? "light" : "dark"} />
         </NavigationContainer>
       </GestureHandlerRootView>
     </SafeAreaProvider>
