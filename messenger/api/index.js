@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
+const dotenv = require("dotenv").config()
 
 const app = express();
 const port = 8000;
@@ -15,7 +16,7 @@ app.use(passport.initialize());
 const jwt = require("jsonwebtoken");
 
 mongoose
-  .connect("mongodb+srv://sujananand:sujan@cluster0.qvtqiux.mongodb.net/", {
+  .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
