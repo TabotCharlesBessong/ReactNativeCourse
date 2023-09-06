@@ -15,6 +15,7 @@ const ProductsScreen = ({ navigation }) => {
 
   const dispatch = useDispatch();
 
+  // @ts-ignore
   const products = useSelector((state) => state.products.products);
 
   return (
