@@ -1962,6 +1962,11 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
+"@stripe/stripe-react-native@^0.30.0":
+  version "0.30.0"
+  resolved "https://registry.yarnpkg.com/@stripe/stripe-react-native/-/stripe-react-native-0.30.0.tgz#75fd976ee6cf153569523ba1ccc221ddd160d99f"
+  integrity sha512-uh8XKUA7jmvr/10vf9eCTaLJ3xQ/3IFPpW+oQz2OEi1hUF2gOAEyZU6IDjMu23FX7aYlubBzgtN+iZfP5zuHEQ==
+
 "@types/hoist-non-react-statics@^3.3.1":
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
