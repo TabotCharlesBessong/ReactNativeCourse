@@ -1,6 +1,8 @@
+import images from "../constant/images";
+
 export default [
   {
-    img: "http://d27k8xmh3cuzik.cloudfront.net/wp-content/uploads/2017/06/Udaya-Homestay-KB-92-6506.jpg",
+    img: images.house1,
     location: "Dreamy HomeStay in Madikeri",
     title: "Stay at this popular residence",
     description: "1 guest · 1 bedroom · 1 bed · 1.5 shared bathrooms",
@@ -14,10 +16,10 @@ export default [
     person: "kumar P",
     review: "4.1",
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGeT745PQBI6qMGpR7erTJHKAhGAmPUSm11g&usqp=CAU",
+      images.person1,
   },
   {
-    img: "https://q-xx.bstatic.com/xdata/images/hotel/840x460/99705889.jpg?k=41afb2d158ae6b06bf85c3a2fd5e3f6d98a68ae9ebdcb0fece8d7ad0e36301a7&o=",
+    img: images.house2,
     location: "coorg adventure club",
     title: "Stay at this Adventorous club",
     description: "1 guest · 1 bedroom · 1 bed · 1.5 shared bathrooms",
@@ -31,10 +33,10 @@ export default [
     person: "Saniya",
     review: "4.3",
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhVkYWJiRWIB8kdqdSoTC39wJ44xGywRP2Ew&usqp=CAU",
+      images.person2,
   },
   {
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIqSrBnEbr4zRd8P7bAujID3ypg_SpyvfiMA&usqp=CAU",
+    img: images.house3,
     location: "coorg Adventure Stay",
     title: "Exclusive Riverside Homestay Experience in Coorg",
     description: "1 guest · 1 bedroom · 1 bed · 1.5 shared bathrooms",
@@ -48,10 +50,10 @@ export default [
     person: "Mukund D",
     review: "4.3",
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt3VUC8GpmFONZ1zHeX4inKMpyNNA7NUVNQw&usqp=CAU",
+      images.person3,
   },
   {
-    img: "https://www.holidify.com/images/cmsuploads/compressed/58518008_20210122151106.jpg",
+    img: images.house4,
     location: "Madikeri Resort",
     title: "Peaceful Homestay in Madikeri",
     description: "1 guest · 1 bedroom · 1 bed · 1.5 shared bathrooms",
@@ -65,10 +67,10 @@ export default [
     person: "Priya K",
     review: "4.4",
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMis8KISWmiizkH_NjuMsOTRWDD6HEt8Q62w&usqp=CAU",
+      images.person4,
   },
   {
-    img: "https://q-xx.bstatic.com/xdata/images/hotel/840x460/113280544.jpg?k=5101cfcfd7e692b48e672c3ff53acf2e530035b7c23dbb2b4b931571df881e85&o=",
+    img: images.house5,
     location: "Madikeri Night Stays",
     title: "Off beat stay at Coorg",
     description: "1 guest · 1 bedroom · 1 bed · 1.5 shared bathrooms",
@@ -82,10 +84,10 @@ export default [
     person: "Kiran MK",
     review: "4.4",
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8AnYjq0SHtbcvmBLciva7M6L-gjytGSh0sQ&usqp=CAU",
+      images.person2,
   },
   {
-    img: "https://q-xx.bstatic.com/xdata/images/hotel/840x460/311054251.jpg?k=1f8713156f5f8b7d0fa1fa2f7d19fdbbe0f62bb5d534da0e0f6830c17aa85825&o=",
+    img: images.house6,
     location: "Coorg Tourism and Forest Trip",
     title: "Thrilling escape into the beauty of nature",
     description: "1 guest · 1 bedroom · 1 bed · 1.5 shared bathrooms",
@@ -99,6 +101,6 @@ export default [
     person: "Madhav jain",
     review: "4.4",
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYbf5Q0hD6IjNqxwtg6m1wja8trLXVRBo6_g&usqp=CAU",
+      images.person3,
   },
 ];
