@@ -11,7 +11,7 @@ const User = ({ item }) => {
     const fetchFriendRequests = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8000/friend-requests/sent/${userId}`
+          `http://192.168.67.378000/friend-requests/sent/${userId}`
         );
 
         const data = await response.json();
@@ -31,7 +31,9 @@ const User = ({ item }) => {
   useEffect(() => {
     const fetchUserFriends = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/friends/${userId}`);
+        const response = await fetch(
+          `http://192.168.67.378000/friends/${userId}`
+        );
 
         const data = await response.json();
 
@@ -49,7 +51,7 @@ const User = ({ item }) => {
   }, []);
   const sendFriendRequest = async (currentUserId, selectedUserId) => {
     try {
-      const response = await fetch("http://localhost:8000/friend-request", {
+      const response = await fetch("http://192.168.67.378000/friend-request", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -85,7 +87,7 @@ const User = ({ item }) => {
       <View style={{ marginLeft: 12, flex: 1 }}>
         <Text style={{ fontWeight: "bold" }}>{item?.name}</Text>
         <Text style={{ marginTop: 4, color: "gray" }}>{item?.email}</Text>
-      </View>     
+      </View>
       {userFriends.includes(item._id) ? (
         <Pressable
           style={{
@@ -97,7 +99,8 @@ const User = ({ item }) => {
         >
           <Text style={{ textAlign: "center", color: "white" }}>Friends</Text>
         </Pressable>
-      ) : requestSent || friendRequests.some((friend) => friend._id === item._id) ? (
+      ) : requestSent ||
+        friendRequests.some((friend) => friend._id === item._id) ? (
         <Pressable
           style={{
             backgroundColor: "gray",
