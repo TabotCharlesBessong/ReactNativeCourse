@@ -1,7 +1,8 @@
+import images from "../constant/images";
+
 export default [
   {
-    img: "https://q-xx.bstatic.com/xdata/images/hotel/840x460/111534373.jpg?k=edd3e48a10cba1620bde7f0bc5ae7252ab0e1f94020aa8e00a6e3a63650124c7&o=",
-    location: "A cool homestay at Chikmagalur",
+    img: images.image1,
     title: "Sri Sai Homestay",
     description: "1 guest · 1 bedroom · 1 bed · 1.5 shared bathrooms",
     star: 4.52,
@@ -14,11 +15,10 @@ export default [
     person: "sharanu",
     review: "4.5",
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGeT745PQBI6qMGpR7erTJHKAhGAmPUSm11g&usqp=CAU",
+      images.person1,
   },
   {
-    img: "https://q-xx.bstatic.com/xdata/images/hotel/840x460/209928108.jpg?k=c09d94909c020452917748072be38eac2d69cfa80f40aa93059748a615b54a01&o=",
-    location: "Adventourous stay  at Chikmagalur",
+    img: images.image2,
     title: "Agora Residence",
     description: "1 guest · 1 bedroom · 1 bed · 1.5 shared bathrooms",
     star: 4.38,
@@ -31,11 +31,10 @@ export default [
     person: "Saniya P",
     review: "4.3",
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-jleFn47_l_wAo-Xgcf8AUWvUiYH7o9-9Mw&usqp=CAU",
+      images.person2,
   },
   {
-    img: "https://q-xx.bstatic.com/xdata/images/hotel/840x460/17181467.jpg?k=bab633b5f83d358481b1bff411c74005c723e563a5eb24deadaff405221016f0&o=",
-    location: "Chikmagalur residency ",
+    img: images.image3,
     title: "Taj Falaknuma Palace",
     description: "1 guest · 1 bedroom · 1 bed · 1.5 shared bathrooms",
     star: 4.51,
@@ -48,11 +47,10 @@ export default [
     person: "Kumari krishna",
     review: "4.3",
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPh4hie07ZQXeLc9qu62YuSHn1dLlv1k4oEA&usqp=CAU",
+      images.person3,
   },
   {
-    img: "https://q-xx.bstatic.com/xdata/images/hotel/840x460/318863870.jpg?k=386dda8cd9395ac0ceed3f9cea1b9dcab34d045ed30fb216857a3f9b0c923c38&o=",
-    location: "M G RESIDENCY at Chikmagalur ",
+    img: images.image4,
     title: "Cavinti Calabarzon",
     description: "1 guest · 1 bedroom · 1 bed · 1.5 shared bathrooms",
     star: 4.21,
@@ -65,11 +63,10 @@ export default [
     person: "Pranav V",
     review: "4.4",
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjbkQQWkcrMK_r_yNMNiSgrAgKyeUO5s2unQ&usqp=CAU",
+      images.person4,
   },
   {
-    img: "https://q-xx.bstatic.com/xdata/images/hotel/840x460/267103753.jpg?k=6fe6c75f3c85e3f780ecdb690469925dc372cc837e9b2725cbfab032d48ebaf4&o=",
-    location: "Chikmagalur Green Homestay",
+    img: images.image5,
     title: "Green Homestay",
     description: "1 guest · 1 bedroom · 1 bed · 1.5 shared bathrooms",
     star: 4.37,
@@ -82,6 +79,6 @@ export default [
     person: "Pranav V",
     review: "4.4",
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjbkQQWkcrMK_r_yNMNiSgrAgKyeUO5s2unQ&usqp=CAU",
+      images.person5,
   },
 ];

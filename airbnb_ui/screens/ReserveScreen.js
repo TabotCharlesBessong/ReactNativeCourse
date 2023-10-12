@@ -56,7 +56,7 @@ const ReserveScreen = () => {
     <>
       <ScrollView style={{ marginTop: 30 }}>
         <Image
-          source={{ uri: route.params.img }}
+          source={route.params.img }
           style={{ width: "100%", height: 200 }}
         />
         <View style={{ padding: 10 }}>

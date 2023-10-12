@@ -25,7 +25,7 @@ const SearchItem = (props) => {
       style={{ flex: 1, margin: 15,marginTop: 30 }}
     >
       <Image
-        source={{ uri: data.img }}
+        source={data.img}
         style={{
           width: "100%",
           height: 300,
