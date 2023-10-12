@@ -2,15 +2,18 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import HomeScreen from "./screens/HomeScreen";
-import SearchScreen from "./screens/SearchScreen";
-import ReserveScreen from "./screens/ReserveScreen";
-import ConfirmationScreen from "./screens/ConfirmationScreen";
-import FinishScreen from "./screens/FinishScreen";
-import MapScreen from "./screens/MapScreen";
-import MadikeriScreen from "./screens/MadikeriScreen";
-import ChikMagalurScreen from "./screens/ChikMagalurScreen";
-import KoidaikanalScreen from "./screens/KoidaikanalScreen";
+import {
+  ChikMagalurScreen,
+  ConfirmationScreen,
+  FinishScreen,
+  HomeScreen,
+  KoidaikanalScreen,
+  MadikeriScreen,
+  MapScreen,
+  ReserveScreen,
+  SearchScreen,
+} from "./screens";
+
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
   return (
