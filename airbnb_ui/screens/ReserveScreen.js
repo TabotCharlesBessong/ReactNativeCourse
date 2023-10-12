@@ -112,7 +112,7 @@ const ReserveScreen = () => {
                 Hosted By {route.params.person}
               </Text>
               <Image
-                source={{ uri: route.params.image }}
+                source={route.params.image}
                 style={{
                   width: 44,
                   height: 44,
