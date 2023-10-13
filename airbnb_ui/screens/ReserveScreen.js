@@ -28,7 +28,7 @@ const ReserveScreen = () => {
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [date, setDate] = useState(new Date());
   const [value, setValue] = useState(new Date());
-   const [selectedRange, setRange] = useState({});
+  const [selectedRange, setRange] = useState({});
   const onCancel = () => {
     // You should close the modal in here
     setShowDatePicker(false);
@@ -54,9 +54,9 @@ const ReserveScreen = () => {
   };
   return (
     <>
-      <ScrollView style={{ marginTop: 30 }}>
+      <ScrollView style={{ marginTop: 40 }}>
         <Image
-          source={route.params.img }
+          source={route.params.img}
           style={{ width: "100%", height: 200 }}
         />
         <View style={{ padding: 10 }}>
@@ -84,8 +84,8 @@ const ReserveScreen = () => {
             }}
           >
             <View>
-              <Text style={{ fontSize: 15, fontWeight: "bold" }}>
-                this is a rare find.
+              <Text style={{ fontSize: 15, fontWeight: "bold",textTransform:'capitalize' }}>
+                this is a rare to find.
               </Text>
               <Text style={{ fontSize: 16, color: "#606060" }}>
                 {route.params.person}'s on Airbnb is usually fully booked
@@ -276,7 +276,7 @@ const ReserveScreen = () => {
           <View>
             {selectedRange.firstDate && selectedRange.secondDate ? (
               <Text style={{ fontSize: 18 }}>
-                {selectedRange.firstDate}-{selectedRange.secondDate}
+                {selectedRange.firstDate} - {selectedRange.secondDate}
               </Text>
             ) : null}
             {/* <Text>start date: {selectedRange.firstDate}</Text>

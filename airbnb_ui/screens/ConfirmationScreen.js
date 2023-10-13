@@ -41,7 +41,7 @@ const ConfirmationScreen = () => {
         <View>
           <Image
             style={{ width: 100, height: 100, borderRadius: 10 }}
-            source={{ uri: route.params.img }}
+            source={route.params.img }
           />
         </View>
         <View style={{ marginLeft: 15 }}>
