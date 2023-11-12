@@ -1,15 +1,17 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import {
-  StyleSheet,
-  View,
-  Text,
   Dimensions,
+  Platform,
   StatusBar,
+  StyleSheet,
+  Text,
   TouchableOpacity,
-  Platform
+  View
 } from "react-native";
 
-import {Picker} from "@react-native-picker/picker";
+import { Picker } from "@react-native-picker/picker";
+import { getRemaining } from "./utils/getRemaining";
+import { createArray } from "./utils/createArray";
 
 const screen = Dimensions.get("window");
 
@@ -70,23 +72,6 @@ const styles = StyleSheet.create({
   }
 });
 
-const formatNumber = number => `0${number}` . slice(-2);
-
-const getRemaining = time => {
-  const minutes = Math.floor(time / 60);
-  const seconds = time - minutes * 60;
-  return {minutes: formatNumber(minutes), seconds: formatNumber(seconds)}
-}
-
-const createArray = length => {
-  const arr = [];
-  let i = 0;
-  while(i < length){
-    arr.push(i.toString());
-    i += 1;
-  }
-  return arr;
-}
 
 const AVAILABLE_MINUTES = createArray(10);
 const AVAILABLE_SECONDS = createArray(60);
