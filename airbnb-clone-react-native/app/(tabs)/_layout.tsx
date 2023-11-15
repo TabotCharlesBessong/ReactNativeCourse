@@ -3,6 +3,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
+import React from 'react';
 
 const Layout = () => {
   return (

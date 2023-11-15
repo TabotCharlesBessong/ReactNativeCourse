@@ -7,6 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
 import ModalHeaderText from '@/components/ModalHeaderText';
 import { TouchableOpacity } from 'react-native';
+import React from 'react';
 
 const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 // Cache the Clerk JWT

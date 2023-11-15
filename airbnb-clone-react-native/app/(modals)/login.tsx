@@ -7,6 +7,7 @@ import { View, StyleSheet, TextInput, Text, TouchableOpacity } from 'react-nativ
 // https://github.com/clerkinc/clerk-expo-starter/blob/main/components/OAuth.tsx
 import { useWarmUpBrowser } from '@/hooks/useWarmUpBrowser';
 import { defaultStyles } from '@/constants/Styles';
+import React from 'react';
 
 enum Strategy {
   Google = 'oauth_google',
@@ -17,9 +18,9 @@ const Page = () => {
   useWarmUpBrowser();
 
   const router = useRouter();
-  const { startOAuthFlow: googleAuth } = useOAuth({ strategy: 'oauth_google' });
-  const { startOAuthFlow: appleAuth } = useOAuth({ strategy: 'oauth_apple' });
-  const { startOAuthFlow: facebookAuth } = useOAuth({ strategy: 'oauth_facebook' });
+  const { startOAuthFlow: googleAuth } = useOAuth({ strategy: Strategy.Google });
+  const { startOAuthFlow: appleAuth } = useOAuth({ strategy: Strategy.Apple });
+  const { startOAuthFlow: facebookAuth } = useOAuth({ strategy: Strategy.Facebook });
 
   const onSelectAuth = async (strategy: Strategy) => {
     const selectedAuth = {
