@@ -4,6 +4,7 @@ import BottomSheet from '@gorhom/bottom-sheet';
 import Listings from '@/components/Listings';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
+import React from 'react';
 
 interface Props {
   listings: any[];

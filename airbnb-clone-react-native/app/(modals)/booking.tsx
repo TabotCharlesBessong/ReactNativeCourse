@@ -11,6 +11,7 @@ import { places } from '@/assets/data/places';
 import { useRouter } from 'expo-router';
 // @ts-ignore
 import DatePicker from 'react-native-modern-datepicker';
+import React from 'react';
 
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
 
