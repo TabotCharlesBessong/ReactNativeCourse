@@ -5,6 +5,7 @@ import { Link } from 'expo-router';
 import Animated, { FadeInRight, FadeOutLeft } from 'react-native-reanimated';
 import { useEffect, useRef, useState } from 'react';
 import { BottomSheetFlatList, BottomSheetFlatListMethods } from '@gorhom/bottom-sheet';
+import React from 'react';
 
 interface Props {
   listings: any[];
