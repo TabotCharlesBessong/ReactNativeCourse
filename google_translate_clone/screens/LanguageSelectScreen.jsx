@@ -50,7 +50,7 @@ const LanguageSelectScreen = ({navigation,route}) => {
           const languageKey = item.item
           const languageString = supportedLanguages[languageKey]
           return (
-            <LanguageItem onPress={onLanguageSelect} text={languageString} selected={languageKey === selected} />
+            <LanguageItem onPress={() => onLanguageSelect(languageKey)} text={languageString} selected={languageKey === selected} />
           )
         }}
       />
