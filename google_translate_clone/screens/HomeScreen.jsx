@@ -6,21 +6,35 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import colors from "../constant/colors";
+import supportedLanguages from "../utils/supportedLanguages";
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({ navigation,route }) => {
+
+  const params = route.params || {}
   const [enteredtext, setEnteredtext] = useState("");
+  const [resulttext, setResulttext] = useState("hola mi amore");
+  const [languageTo, setLanguageTo] = useState('fr')
+  const [languageFrom, setLanguageFrom] = useState('en')
+
+  useEffect(() => {
+    if (params.languageTo) {
+      setLanguageTo(params.languageTo)
+    }if (params.languageFrom) {
+      setLanguageFrom(params.languageFrom)
+    }
+  },[params.languageTo,params.languageFrom])
   return (
     <View style={styles.container}>
       {/* Building language selector */}
       <View style={styles.languageContainer}>
         <TouchableOpacity
           style={styles.languageOption}
-          onPress={() => console.log("Ouch i was clicked")}
+          onPress={() => navigation.navigate("LanguageSelector",{title:'Translate from',selected:languageFrom,mode:'from'})}
         >
-          <Text style={styles.languageOptionText}>English</Text>
+          <Text style={styles.languageOptionText}>{supportedLanguages[languageFrom]}</Text>
         </TouchableOpacity>
 
         <View style={styles.languageSelector}>
@@ -29,9 +43,9 @@ const HomeScreen = ({ navigation }) => {
 
         <TouchableOpacity
           style={styles.languageOption}
-          onPress={() => console.log("Ouch i was clicked")}
+          onPress={() => navigation.navigate("LanguageSelector",{title:'Translate to',selected:languageTo,mode:'to'})}
         >
-          <Text style={styles.languageOptionText}>French</Text>
+          <Text style={styles.languageOptionText}>{supportedLanguages[languageTo]}</Text>
         </TouchableOpacity>
       </View>
 
@@ -54,6 +68,27 @@ const HomeScreen = ({ navigation }) => {
             color={enteredtext !== "" ? colors.primary : colors.primaryDisabled}
           />
         </TouchableOpacity>
+      </View>
+
+      <View style={styles.resultContainer}>
+        <Text style={styles.resultText}>{resulttext}</Text>
+        <TouchableOpacity
+          style={styles.iconContainer}
+          disabled={resulttext === ""}
+          onPress={() => console.log("Ouch i was clicked")}
+        >
+          <Ionicons
+            name="copy"
+            size={24}
+            color={
+              resulttext !== "" ? colors.textColor : colors.textColorDisabled
+            }
+          />
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.historyContainer} >
+
       </View>
     </View>
   );
