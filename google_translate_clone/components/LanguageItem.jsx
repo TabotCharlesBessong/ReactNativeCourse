@@ -1,42 +1,38 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
-import { Feather } from '@expo/vector-icons';
-import colors from '../constant/colors'
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Feather } from "@expo/vector-icons";
+import colors from "../constant/colors";
 
-export default LanguageItem = props => {
+export default LanguageItem = (props) => {
+  return (
+    <TouchableOpacity style={styles.container} onPress={props.onPress}>
+      <View style={styles.iconContainer}>
+        {props.selected && (
+          <Feather name="check" size={18} color={colors.textColor} />
+        )}
+      </View>
 
-    return (
-    <TouchableOpacity
-                style={styles.container}
-                onPress={props.onPress}>
-        <View style={styles.iconContainer}>
-            {
-                props.selected &&
-                <Feather name="check" size={18} color={colors.textColor} />
-            }
-        </View>
-
-        <Text style={styles.text}>{props.text}</Text>
+      <Text style={styles.text}>{props.text}</Text>
     </TouchableOpacity>
-    )
-}
+  );
+};
 
 const styles = StyleSheet.create({
-    container: {
-        paddingHorizontal: 10,
-        paddingVertical: 15,
-        flexDirection: 'row',
-        borderBottomColor: colors.lightGrey,
-        borderBottomWidth: 1
-    },
-    iconContainer: {
-        paddingRight: 7,
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: 40
-    },
-    text: {
-        flex: 1,
-        fontFamily: 'regular',
-        letterSpacing: 0.3
-    }
-})
+  container: {
+    paddingHorizontal: 10,
+    paddingVertical: 15,
+    flexDirection: "row",
+    borderBottomColor: colors.lightGrey,
+    borderBottomWidth: 1,
+  },
+  iconContainer: {
+    paddingRight: 7,
+    alignItems: "center",
+    justifyContent: "center",
+    width: 40,
+  },
+  text: {
+    flex: 1,
+    fontFamily: "regular",
+    letterSpacing: 0.3,
+  },
+});
