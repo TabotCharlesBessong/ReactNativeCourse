@@ -6,10 +6,11 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import colors from "../constant/colors";
 import supportedLanguages from "../utils/supportedLanguages";
+import axios from "axios"
 
 const HomeScreen = ({ navigation,route }) => {
 
@@ -26,6 +27,29 @@ const HomeScreen = ({ navigation,route }) => {
       setLanguageFrom(params.languageFrom)
     }
   },[params.languageTo,params.languageFrom])
+
+  const onSubmit =  useCallback (() => {
+    // const axios = require('axios');
+
+    const options = {
+      method: 'GET',
+      url: 'https://nlp-translation.p.rapidapi.com/v1/translate',
+      params: {
+        text: 'Hello, world!!',
+        to: 'es',
+        from: 'en'
+      },
+      headers: {
+        'X-RapidAPI-Key': 'aa90f9069dmsh77129c141cac057p10e255jsn3b7b6110ee58',
+        'X-RapidAPI-Host': 'nlp-translation.p.rapidapi.com'
+      }
+    };
+    axios.request(options).then(function (response) {
+      console.log(response.data)
+    }).catch(function (error) {
+      console.error(error)
+    })
+  })
   return (
     <View style={styles.container}>
       {/* Building language selector */}
@@ -60,7 +84,7 @@ const HomeScreen = ({ navigation,route }) => {
         <TouchableOpacity
           style={styles.iconContainer}
           disabled={enteredtext === ""}
-          onPress={() => console.log("Ouch i was clicked")}
+          onPress={onSubmit}
         >
           <Ionicons
             name="arrow-forward-circle-sharp"
