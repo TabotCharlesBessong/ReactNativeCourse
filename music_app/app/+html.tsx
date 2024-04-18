@@ -1,4 +1,5 @@
 import { ScrollViewStyleReset } from 'expo-router/html';
+import React from 'react';
 
 // This file is web-only and used to configure the root HTML for every
 // web page during static rendering.
@@ -31,8 +32,8 @@ const responsiveBackground = `
 body {
   background-color: #fff;
 }
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   body {
-    background-color: #000;
+    background-color: #fff;
   }
 }`;
