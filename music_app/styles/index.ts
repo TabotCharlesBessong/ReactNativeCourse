@@ -5,6 +5,7 @@ export const defaultStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
+    height:'90%'
   },
   text: {
     fontSize: fontSize.base,
@@ -17,6 +18,8 @@ export const utilsStyles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+    marginTop:24,
+    top:32
   },
   slider: {
     height: 7,
