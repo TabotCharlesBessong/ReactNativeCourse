@@ -3840,6 +3840,11 @@ electron-to-chromium@^1.4.668:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.738.tgz#9a7fca98abaee61e20c9c25013d5ce60bb533436"
   integrity sha512-lwKft2CLFztD+vEIpesrOtCrko/TFnEJlHFdRhazU7Y/jx5qc4cqsocfVrBg4So4gGe9lvxnbLIoev47WMpg+A==
 
+eme-encryption-scheme-polyfill@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/eme-encryption-scheme-polyfill/-/eme-encryption-scheme-polyfill-2.1.1.tgz#91c823ed584e8ec5a9f03a6a676def8f80c57a4c"
+  integrity sha512-njD17wcUrbqCj0ArpLu5zWXtaiupHb/2fIUQGdInf83GlI+Q6mmqaPGLdrke4savKAu15J/z1Tg/ivDgl14g0g==
+
 emittery@^0.13.1:
   version "0.13.1"
   resolved "https://registry.yarnpkg.com/emittery/-/emittery-0.13.1.tgz#c04b8c3457490e0847ae51fced3af52d338e3dad"
@@ -7141,6 +7146,11 @@ react-native-screens@~3.29.0:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
 
+react-native-track-player@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-track-player/-/react-native-track-player-4.1.1.tgz#96f8688f270c5a01bc597b6331843b191402502b"
+  integrity sha512-E5N/eK/+HtAVJUAzXpm1cWz8ROheV9jb0TI6h2bM+333U+DWibTTnT2T1122FkCoXLXIYavtm2FR2if+5jH8cA==
+
 react-native-web@~0.19.6:
   version "0.19.10"
   resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.19.10.tgz#5f7205f8909c0889bc89c9fde7c6e287defa7c63"
@@ -7630,6 +7640,13 @@ setprototypeof@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.2.0.tgz#66c9a24a73f9fc28cbe66b09fed3d33dcaf1b424"
   integrity sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==
+
+shaka-player@^4.7.13:
+  version "4.7.13"
+  resolved "https://registry.yarnpkg.com/shaka-player/-/shaka-player-4.7.13.tgz#bdfb5b7a1b439d3163f11666a99fb6c2396258d0"
+  integrity sha512-PTU0lTEx1C8LdyNdZSSTea3Wf1/WT4KJzp6o07CofZqq8fzrGDiWElbir+LQIH1CTZpicO1otJQ24xjPgXz9kg==
+  dependencies:
+    eme-encryption-scheme-polyfill "^2.1.1"
 
 shallow-clone@^3.0.0:
   version "3.0.1"
