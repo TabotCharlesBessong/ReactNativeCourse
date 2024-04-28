@@ -10,7 +10,7 @@ const Route = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name='home' component={<HomeScreen />} />
+        <Stack.Screen name='Home' component={HomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )
