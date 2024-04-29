@@ -67,7 +67,7 @@ const signup = () => {
         ]}
         onPress={onSignup}
       >
-        <Text style={defaultStyles.buttonText}>Sign up</Text>
+        <Text style={defaultStyles.buttonText}>Continue</Text>
       </TouchableOpacity>
     </View>
     </KeyboardAvoidingView>
