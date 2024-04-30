@@ -50,7 +50,7 @@ const signup = () => {
             onChangeText={(text) => setPhoneNumber(text)}
           />
         </View>
-        {/* <Link
+        <Link
           href={"/signup"}
           replace
           asChild
@@ -60,7 +60,7 @@ const signup = () => {
               Don't yet have an account? signup
             </Text>
           </TouchableOpacity>
-        </Link> */}
+        </Link>
 
         {/* <View style={{ flex: 1 }} /> */}
         <TouchableOpacity
