@@ -10,10 +10,23 @@ import {
 import React, { useState } from "react";
 import { defaultStyles } from "@/constants/Styles";
 import Colors from "@/constants/Colors";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
+import { useSignUp } from "@clerk/clerk-expo";
 
 const signup = () => {
-  const onSignup = async () => {};
+  const router = useRouter()
+  const {signUp} = useSignUp()
+  const onSignup = async () => {
+    const fullPhoneNumber = `${countryCode}${phoneNumber}`
+    try {
+      await signUp?.create({
+        phoneNumber:fullPhoneNumber
+      })
+      router.push({pathname:"/verify/[phone]",params:{phone:fullPhoneNumber}})
+    } catch (error) {
+      console.log("error signing up")
+    }
+  };
   const [countryCode, setCountryCode] = useState("+237");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const keyboardVerticalOffset = Platform.OS === 'ios' ? 90 : 80
