@@ -1,29 +1,12 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Asset } from "expo-asset";
-import * as FileSystem from "expo-file-system";
 import { SQLiteProvider } from "expo-sqlite/next";
 import React, { Suspense, useEffect, useState } from "react";
-import { ActivityIndicator, Text, View } from "react-native";
+import { Loader } from "./components";
 import { HomeScreen } from "./screens";
+import { loadDB } from "./utils";
 
 const Stack = createNativeStackNavigator();
-
-const loadDB = async () => {
-  const dbName = "budget.db";
-  const dbAsset = require("./assets/budget.db");
-  const dbUri = Asset.fromModule(dbAsset).uri;
-  const dbFilePath = `${FileSystem.documentDirectory}SQLite/${dbName}`;
-
-  const fileInfo = await FileSystem.getInfoAsync(dbFilePath);
-  if (!fileInfo.exists) {
-    await FileSystem.makeDirectoryAsync(
-      `${FileSystem.documentDirectory}SQLite`,
-      { intermediates: true }
-    );
-    await FileSystem.downloadAsync(dbUri, dbFilePath);
-  }
-};
 
 export default function App() {
   const [dbLoaded, setDbLoaded] = useState<boolean>(true);
@@ -36,34 +19,14 @@ export default function App() {
 
   if (dbLoaded) {
     return (
-      <View
-        style={{
-          display: "flex",
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <ActivityIndicator size="large" />
-        <Text>Loading....</Text>
-      </View>
+      <Loader />
     );
   }
   return (
     <NavigationContainer>
       <Suspense
         fallback={
-          <View
-            style={{
-              display: "flex",
-              flex: 1,
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <ActivityIndicator size="large" />
-            <Text>Loading....</Text>
-          </View>
+          <Loader />
         }
       >
         <SQLiteProvider useSuspense databaseName="budget.db">
