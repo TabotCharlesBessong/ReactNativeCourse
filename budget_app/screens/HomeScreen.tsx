@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { Category, Transaction } from "../types";
 import { useSQLiteContext } from "expo-sqlite/next";
@@ -28,14 +28,14 @@ const HomeScreen = () => {
     });
   }, [db]);
   return (
-    <View>
+    <ScrollView>
       <Text>HomeScreen</Text>
       <TransactionList
         deleteTransaction={deleteTransaction}
         categories={categories}
         transactions={transaction}
       />
-    </View>
+    </ScrollView>
   );
 };
 
