@@ -18,14 +18,14 @@ const signup = () => {
   const {signUp} = useSignUp()
   const onSignup = async () => {
     const fullPhoneNumber = `${countryCode}${phoneNumber}`
-    try {
-      await signUp?.create({
-        phoneNumber:fullPhoneNumber
-      })
-      router.push({pathname:"/verify/[phone]",params:{phone:fullPhoneNumber}})
-    } catch (error) {
-      console.log("error signing up")
-    }
+    // try {
+    //   await signUp?.create({
+    //     phoneNumber:fullPhoneNumber
+    //   })
+    router.push({pathname:"/verify/[phone]",params:{phone:fullPhoneNumber}})
+    // } catch (error) {
+    //   console.log("error signing up")
+    // }
   };
   const [countryCode, setCountryCode] = useState("+237");
   const [phoneNumber, setPhoneNumber] = useState<string>("");

@@ -3,7 +3,7 @@ import React from 'react'
 import { useLocalSearchParams } from 'expo-router'
 
 const VerifyPhone = () => {
-  const {phone} = useLocalSearchParams<{phone:string}>()
+  const {phone,signin} = useLocalSearchParams<{phone:string,signin:string}>()
   return (
     <View>
       <Text>[phone]</Text>

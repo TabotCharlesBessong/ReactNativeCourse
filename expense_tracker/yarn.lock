@@ -1260,6 +1260,16 @@
     eslint-config-custom "*"
     tslib "2.4.1"
 
+"@clerk/clerk-react@^5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@clerk/clerk-react/-/clerk-react-5.0.2.tgz#df96243046d20594496b0556e0bc22a36a5ac635"
+  integrity sha512-gSRFc5oCsBvusdmG5PT8JECySf5qhPW9pl0o9s15KAxy+HlbBJDzombJmGvj3E4nFd/UiYm9LF4S2I61eGBf2w==
+  dependencies:
+    "@clerk/shared" "2.0.1"
+    "@clerk/types" "4.2.0"
+    eslint-config-custom "*"
+    tslib "2.4.1"
+
 "@clerk/localizations@2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@clerk/localizations/-/localizations-2.2.0.tgz#0975db30864e07f57098562f5853d57c563f05ec"
@@ -1275,10 +1285,27 @@
     std-env "^3.7.0"
     swr "2.2.0"
 
+"@clerk/shared@2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@clerk/shared/-/shared-2.0.1.tgz#bb6aa9c796c9ede55c0d9a1ec83d5a2a57f909ee"
+  integrity sha512-iRjvWCGVzcN5vi9O3+/bEbA22TegxlnHJJE1a6989OFeeXqSKFqmYwDrvM48umJrbvX5cMbKEgctSVXT2IOgCw==
+  dependencies:
+    glob-to-regexp "0.4.1"
+    js-cookie "3.0.1"
+    std-env "^3.7.0"
+    swr "2.2.0"
+
 "@clerk/types@4.1.0":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@clerk/types/-/types-4.1.0.tgz#b4b0872e3238bbe3267449083f32b6068792b971"
   integrity sha512-e9vsD7EdQE0q9mPwPMq1kPtPC9BYGR8BucEoEu+pEyXXD5cdSkzM+WvhUonnTHNzYE/W/X5d1zFDNvCV5YfS5Q==
+  dependencies:
+    csstype "3.1.1"
+
+"@clerk/types@4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@clerk/types/-/types-4.2.0.tgz#8ba44bf0a736abefe209d1e8f95a46c870ef788b"
+  integrity sha512-JtQINgvRGkO9K8os8pSj3QvNrBDvdc0lFpbTwpF3J1CBLafiJmJiBUyUSzWcI/k/9FlClMZxauZufVp9jlSBjg==
   dependencies:
     csstype "3.1.1"
 
