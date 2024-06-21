@@ -11,6 +11,7 @@ export default function TabsNavigator() {
           tabBarIcon: ({ size, color }) => (
             <FontAwesome5 name="home" size={size} color={color} />
           ),
+          headerShown:false
         }}
       />
       <Tabs.Screen
@@ -20,6 +21,7 @@ export default function TabsNavigator() {
           tabBarIcon: ({ size, color }) => (
             <FontAwesome5 name="user-alt" size={size} color={color} />
           ),
+          headerShown:false
         }}
       />
     </Tabs>
