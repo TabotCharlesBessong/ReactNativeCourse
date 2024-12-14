@@ -10,7 +10,7 @@ export default function RootLayout() {
       />
       <Stack.Screen
         name="categories"
-        options={{ headerShown: true, title: "Category" }}
+        options={{ headerShown: false, title: "Category" }}
       />
       <Stack.Screen
         name="product"
@@ -28,8 +28,6 @@ export default function RootLayout() {
         name="auth"
         options={{ headerShown: true, title: "Auth" }}
       />
-      {/* <Stack.Screen name="(shop)" options={{headerShown:true,title:'Shop'}} /> */}
-      {/* <Stack.Screen name="(shop)" options={{headerShown:true,title:'Shop'}} /> */}
     </Stack>
   );
 }
