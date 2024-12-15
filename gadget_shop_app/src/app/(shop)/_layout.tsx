@@ -31,7 +31,7 @@ const TabsLayout = () => {
           } }}
         />
         <Tabs.Screen name="orders" options={{
-          headerShown: true, title: "Orders", tabBarIcon(props){
+          headerShown: false, title: "Orders", tabBarIcon(props){
             return <TabBarIcon name="book" color={props.color} />;
           } 
         }} />
