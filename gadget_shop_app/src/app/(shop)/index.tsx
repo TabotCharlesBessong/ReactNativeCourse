@@ -7,24 +7,23 @@ import Auth from "../auth";
 
 const index = () => {
   return (
-    // <View>
-    //   <FlatList
-    //     data={PRODUCTS}
-    //     renderItem={({ item }) => (
-    //       <ProductListItem product={item} />
-    //     )}
-    //     keyExtractor={(item) => item.id.toString()}
-    //     numColumns={2}
-    //     ListHeaderComponent={<ListHeader />}
-    //     contentContainerStyle={styles.flatListContent}
-    //     columnWrapperStyle={styles.columnWrapper}
-    //     style={{paddingHorizontal:10,paddingVertical:5}}
-    //   />
-    // </View>
-    <Auth />
+    <View>
+      <FlatList
+        data={PRODUCTS}
+        renderItem={({ item }) => (
+          <ProductListItem product={item} />
+        )}
+        keyExtractor={(item) => item.id.toString()}
+        numColumns={2}
+        ListHeaderComponent={<ListHeader />}
+        contentContainerStyle={styles.flatListContent}
+        columnWrapperStyle={styles.columnWrapper}
+        style={{paddingHorizontal:10,paddingVertical:5}}
+      />
+    </View>
   );
 };
-
+ 
 export default index;
 
 const styles = StyleSheet.create({
