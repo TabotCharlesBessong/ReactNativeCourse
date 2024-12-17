@@ -1,5 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 import React from "react";
 import { TouchableOpacity } from "react-native";
 
@@ -12,7 +12,7 @@ export default function ProductLayout() {
           headerShown: true,
           headerLeft: () => (
             <TouchableOpacity>
-              <Ionicons name="arrow-back" size={24} color="black" />
+              <Ionicons name="arrow-back" size={24} color="black" onPress={() => router.back()} />
             </TouchableOpacity>
           ),
         })}

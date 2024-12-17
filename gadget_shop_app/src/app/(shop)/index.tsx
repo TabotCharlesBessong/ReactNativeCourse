@@ -3,8 +3,11 @@ import React from "react";
 import { PRODUCTS } from "../../../assets/products";
 import ProductListItem from "../../component/product-list-item";
 import ListHeader from "../../component/list-header";
+import { useAuth } from "../../providers/auth-provider";
 
 const index = () => {
+  const {user} = useAuth()
+  console.log(user)
   return (
     <View>
       <FlatList
@@ -22,7 +25,7 @@ const index = () => {
     </View>
   );
 };
-
+ 
 export default index;
 
 const styles = StyleSheet.create({
