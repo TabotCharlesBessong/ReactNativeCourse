@@ -8,6 +8,7 @@ type CartItemType = {
   price: number;
   quantity: number;
   maxQuantity: number;
+  heroImage: string
 };
 
 type CartState = {
