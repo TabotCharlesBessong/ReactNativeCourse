@@ -5,12 +5,16 @@ import {
   ImageBackground,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import * as zod from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Toast } from "react-native-toast-notifications";
+import { Redirect, Stack } from "expo-router";
+import { supabase } from "../lib/supabase";
+import { useAuth } from "../providers/auth-provider";
 
 const authSchema = zod.object({
   email: zod.string().email({ message: "Invalid email address" }),
@@ -20,6 +24,8 @@ const authSchema = zod.object({
 });
 
 const Auth = () => {
+  const {session} = useAuth()
+  if (session)  return <Redirect href="/" />
   const { control, handleSubmit, formState } = useForm({
     resolver: zodResolver(authSchema),
     defaultValues: {
@@ -29,31 +35,27 @@ const Auth = () => {
   });
 
   const signIn = async (data: zod.infer<typeof authSchema>) => {
-    // const { error } = await supabase.auth.signInWithPassword(data);
-    const error: any = {};
-
-    if (error) {
-      alert(error.message);
-    } else {
+    const {error} = await supabase.auth.signInWithPassword(data)
+    if(error) {
+      alert(error.message)
+    }else{
       Toast.show("Signed in successfully", {
         type: "success",
         placement: "top",
-        duration: 1500,
+        duration: 2500,
       });
     }
   };
 
   const signUp = async (data: zod.infer<typeof authSchema>) => {
-    // const { error } = await supabase.auth.signUp(data);
-    const error: any = {};
-
+    const { error } = await supabase.auth.signUp(data);
     if (error) {
       alert(error.message);
     } else {
-      Toast.show("Signed up successfully", {
+      Toast.show("Account created successfully", {
         type: "success",
         placement: "top",
-        duration: 1500,
+        duration: 2500,
       });
     }
   };
@@ -65,6 +67,7 @@ const Auth = () => {
       style={styles.backgroundImage}
     >
       <View style={styles.overlay} />
+      <Stack.Screen options={{headerShown:false}} />
 
       <View style={styles.container}>
         <Text style={styles.title}>Welcome</Text>
