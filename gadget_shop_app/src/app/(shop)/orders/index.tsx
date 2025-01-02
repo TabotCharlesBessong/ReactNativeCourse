@@ -1,29 +1,30 @@
+import { Link, Stack } from "expo-router";
+import React from "react";
 import {
-  View,
-  Text,
-  StyleSheet,
+  ActivityIndicator,
   FlatList,
   ListRenderItem,
   Pressable,
+  StyleSheet,
+  Text,
+  View,
 } from "react-native";
-import React from "react";
-import { ORDERS } from "../../../../assets/orders";
-import { Link, Stack } from "expo-router";
+import { Tables } from "../../../types/datebase.types";
+import { getMyOrders } from "../../../api/api";
 import { format } from "date-fns";
-import { Tables } from "../../../types/database.types";
-import { Order } from "../../../../assets/types/order";
 
-const renderItem: ListRenderItem<Order> = ({ item }) => (
+
+const renderItem: ListRenderItem<Tables<"order">> = ({ item }) => (
   <Link href={`/orders/${item.slug}`} asChild>
     <Pressable style={styles.orderContainer}>
       <View style={styles.orderContent}>
         <View style={styles.orderDetailsContainer}>
           <Text style={styles.orderItem}>{item.slug}</Text>
-          <Text style={styles.orderDetails}>{item.details}</Text>
+          <Text style={styles.orderDetails}>{item.description}</Text>
           <Text style={styles.orderDate}>
-            {/* {format(new Date(item.created_at), "MMM dd, yyyy")} */}
-            {item.date}
+            {format(new Date(item.created_at), "MMM dd, yyyy")}
           </Text>
+          <Text>{item.totalPrice}</Text>
         </View>
         <View
           style={[styles.statusBadge, styles[`statusBadge_${item.status}`]]}
@@ -36,12 +37,16 @@ const renderItem: ListRenderItem<Order> = ({ item }) => (
 );
 
 const index = () => {
+  const {data:orders,error,isLoading} = getMyOrders()
+  if(isLoading) return <ActivityIndicator />
+  if(error || !orders) return <Text style={{textAlign:'center',fontSize:200}} >Error: {error?.message}</Text>
+  if(!orders.length) return <Text style={{textAlign:'center',fontSize:32}} >No orders found</Text>
   return (
     <View style={styles.container}>
       <Stack.Screen options={{title:"Orders"}} />
       <FlatList
-        data={ORDERS}
-        keyExtractor={(item) => item.id.toString()}
+        data={orders}
+        // keyExtractor={(item) => item.id.toString()}/
         renderItem={renderItem}
       />
     </View>

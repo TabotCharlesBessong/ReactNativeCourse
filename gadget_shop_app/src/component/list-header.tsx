@@ -10,36 +10,41 @@ import {
 import React from "react";
 import { Link } from "expo-router";
 import { FontAwesome } from "@expo/vector-icons";
-import { CATEGORIES } from "../../assets/categories";
 import { useCartStore } from "../store/cart-store";
 import { supabase } from "../lib/supabase";
+import { getProductsAndCategories } from "../api/api";
+import { Tables } from "../types/datebase.types";
 
-const ListHeader = () => {
+const ListHeader = ({categories}:{categories:Tables<'category'>[]}) => {
   const {getItemCount} = useCartStore()
   const handleSignout = async () => {
     await supabase.auth.signOut()
   }
+  const {data,isLoading,error} = getProductsAndCategories()
+    // if (isLoading) return <ActivityIndicator />
+    if (error) return <Text>Error: {error.message}</Text>
+    // console.log(data)
   return (
     <View style={[styles.headerContainer]}>
       <View style={styles.headerTop}>
         <View style={styles.headerLeft}>
           <View style={styles.avatarContainer}>
             <Image
-              source={{ uri: 'https://via.placeholder.com/40' }}
+              source={{ uri: "https://via.placeholder.com/40" }}
               style={styles.avatarImage}
             />
             <Text style={styles.avatarText}>Hello Charlie</Text>
           </View>
         </View>
         <View style={styles.headerRight}>
-          <Link style={styles.cartContainer} href='/cart' asChild>
+          <Link style={styles.cartContainer} href="/cart" asChild>
             <Pressable>
               {({ pressed }) => (
                 <View>
                   <FontAwesome
-                    name='shopping-cart'
+                    name="shopping-cart"
                     size={25}
-                    color='gray'
+                    color="gray"
                     style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
                   />
 
@@ -54,20 +59,22 @@ const ListHeader = () => {
             onPress={handleSignout}
             style={styles.signOutButton}
           >
-            <FontAwesome name='sign-out' size={25} color='red' />
+            <FontAwesome name="sign-out" size={25} color="red" />
           </TouchableOpacity>
         </View>
       </View>
       <View style={styles.heroContainer}>
         <Image
-          source={require('../../assets/images/hero.png')}
+          source={{
+            uri: "https://png.pngtree.com/thumb_back/fh260/background/20240913/pngtree-roland-garros-tennis-court-with-racquet-and-logo-in-clay-image_16178231.jpg",
+          }}
           style={styles.heroImage}
         />
       </View>
       <View style={styles.categoriesContainer}>
         <Text style={styles.sectionTitle}>Categories</Text>
         <FlatList
-          data={CATEGORIES}
+          data={data?.categories}
           renderItem={({ item }) => (
             <Link asChild href={`/categories/${item.slug}`}>
               <Pressable style={styles.category}>
@@ -79,7 +86,7 @@ const ListHeader = () => {
               </Pressable>
             </Link>
           )}
-          keyExtractor={item => item.name}
+          keyExtractor={(item) => item.name}
           horizontal
           showsHorizontalScrollIndicator={false}
         />
