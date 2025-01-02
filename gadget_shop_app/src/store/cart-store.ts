@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import { PRODUCTS } from "../../assets/products";
 
 type CartItemType = {
   id: number;
@@ -34,10 +33,7 @@ export const useCartStore = create<CartState>((set, get) => ({
           i.id === item.id
             ? {
                 ...i,
-                quantity: Math.min(
-                  i.quantity + item.quantity,
-                  PRODUCTS.find((p) => p.id === item.id)?.maxQuantity || 0
-                ),
+                quantity: Math.min(i.quantity + item.quantity, i.maxQuantity),
               }
             : i
         ),
