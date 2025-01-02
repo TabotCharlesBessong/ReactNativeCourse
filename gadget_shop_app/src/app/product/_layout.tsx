@@ -2,8 +2,10 @@ import { Ionicons } from "@expo/vector-icons";
 import { router, Stack } from "expo-router";
 import React from "react";
 import { TouchableOpacity } from "react-native";
+import { useProductUpdateSubscription } from "../../api/subscription";
 
 export default function ProductLayout() {
+  useProductUpdateSubscription()
   return (
     <Stack>
       <Stack.Screen
