@@ -22,8 +22,9 @@ const renderItem: ListRenderItem<Tables<"order">> = ({ item }) => (
           <Text style={styles.orderItem}>{item.slug}</Text>
           <Text style={styles.orderDetails}>{item.description}</Text>
           <Text style={styles.orderDate}>
-            {format(new Date(item.created_at),"MMM DD, yyyy")}
+            {format(new Date(item.created_at), "MMM dd, yyyy")}
           </Text>
+          <Text>{item.totalPrice}</Text>
         </View>
         <View
           style={[styles.statusBadge, styles[`statusBadge_${item.status}`]]}
@@ -39,7 +40,7 @@ const index = () => {
   const {data:orders,error,isLoading} = getMyOrders()
   if(isLoading) return <ActivityIndicator />
   if(error || !orders) return <Text style={{textAlign:'center',fontSize:200}} >Error: {error?.message}</Text>
-  if(!orders.length) return <Text style={{textAlign:'center',fontSize:200}} >No orders found</Text>
+  if(!orders.length) return <Text style={{textAlign:'center',fontSize:32}} >No orders found</Text>
   return (
     <View style={styles.container}>
       <Stack.Screen options={{title:"Orders"}} />
