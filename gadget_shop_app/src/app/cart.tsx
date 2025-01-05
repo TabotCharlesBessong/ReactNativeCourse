@@ -12,6 +12,7 @@ import React from "react";
 import { useCartStore } from "../store/cart-store";
 import { StatusBar } from "expo-status-bar";
 import { createOrder, createOrderItem } from "../api/api";
+import { openStripeCheckout, setupStripePaymentSheet } from "../lib/stripe";
 
 type CartItemType = {
   id: number;
@@ -79,6 +80,15 @@ const cart = () => {
   const handleCheckout = async () => {
     const totalPrice = parseFloat(getTotalPrice())
     try {
+      // payment with stripe
+      await setupStripePaymentSheet(Math.floor(totalPrice * 100))
+      const result = await openStripeCheckout()
+
+      if(!result){
+        Alert.alert("An error occurred while processing the checkout")
+        return
+      }
+      // Create order in Supabase
       await createSupabaseOrder({totalPrice},{
         onSuccess:data => {
           createSupabaseOrderItem(
