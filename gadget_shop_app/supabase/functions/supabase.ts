@@ -1,7 +1,8 @@
 import { createClient } from 'jsr:@supabase/supabase-js@2';
-import Stripe from 'npm:stripe@^16.10.0';
+import Stripe from 'npm:stripe@^17.5.0';
+// import { stripe } from './stripe-checkout';
 
-export const stripe = Stripe(Deno.env.get('STRIPE_SECRET_KEY'), {
+export const stripe = Stripe(Deno.env.get('EXPO_PUBLIC_STRIPE_SECRET_KEY'), {
   // This is needed to use the Fetch API rather than relying on the Node http
   // package.
   httpClient: Stripe.createFetchHttpClient(),
@@ -12,8 +13,8 @@ export const getOrCreateStripeCustonerForSupabaseUser = async (
 ) => {
   const authHeader = req.headers.get('Authorization')!;
   const supabaseClient = createClient(
-    Deno.env.get('SUPABASE_URL') ?? '',
-    Deno.env.get('SUPABASE_ANON_KEY') ?? '',
+    Deno.env.get('EXPO_PUBLIC_SUPABASE_URL') ?? '',
+    Deno.env.get('EXPO_PUBLIC_SUPABASE_ANON_KEY') ?? '',
     { global: { headers: { Authorization: authHeader } } }
   );
 
@@ -44,10 +45,12 @@ export const getOrCreateStripeCustonerForSupabaseUser = async (
     },
   });
 
+  console.log("Created stripe customer: ",customer)
+  
   await supabaseClient
-    .from('users')
-    .update({ stripe_customer_id: customer.id })
-    .eq('id', user.id);
-
+  .from('users')
+  .update({ stripe_customer_id: customer.id })
+  .eq('id', user.id);
+  
   return customer.id;
 };

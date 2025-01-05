@@ -31,7 +31,7 @@ Deno.serve(async req => {
 
   const response = {
     paymentIntent: paymentIntent.client_secret,
-    publicKey: Deno.env.get('STRIPE_PUBLISHABLE_KEY'),
+    publicKey: Deno.env.get('EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY'),
     ephemeralKey: ephemeralKey.secret,
     customer,
   };

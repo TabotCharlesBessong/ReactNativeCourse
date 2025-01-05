@@ -32,8 +32,8 @@ export const setupStripePaymentSheet = async (totalAmount: number) => {
   await initPaymentSheet({
     merchantDisplayName: 'Charlie',
     paymentIntentClientSecret: paymentIntent,
-    // customerId: customer,
-    // customerEphemeralKeySecret: ephemeralKey,
+    customerId: customer,
+    customerEphemeralKeySecret: ephemeralKey,
     billingDetailsCollectionConfiguration: {
       name: 'always' as CollectionMode,
       phone: 'always' as CollectionMode,
