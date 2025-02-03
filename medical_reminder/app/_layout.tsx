@@ -38,6 +38,7 @@ export default function RootLayout() {
         header:() => null,
         navigationBarHidden:true
       }} >
+        <Stack.Screen name="home" />
         <Stack.Screen name="index" />
       </Stack>
       <StatusBar style="auto" />

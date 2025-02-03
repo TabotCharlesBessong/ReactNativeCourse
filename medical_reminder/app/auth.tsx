@@ -67,7 +67,7 @@ export default function AuthScreen() {
   };
 
   return (
-    <LinearGradient colors={["#4CAF50", "#2E7D32"]} style={styles.container}>
+    <LinearGradient colors={["#1aAe2d", "#146922"]} style={styles.container}>
       {/* <Stack.Screen options={{
         headerShown:false
       }} /> */}
