@@ -1,14 +1,37 @@
-import { Alert, Animated, AppState, Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { LinearGradient } from 'expo-linear-gradient';
-import { Ionicons } from '@expo/vector-icons';
-import Svg, { Circle } from 'react-native-svg';
-import { Link, useFocusEffect, useRouter } from 'expo-router';
-
-// @ts-ignore
+import { useState, useEffect, useRef, useCallback } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  Dimensions,
+  Animated,
+  Modal,
+  Alert,
+  AppState,
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { Link, useRouter } from "expo-router";
+import { LinearGradient } from "expo-linear-gradient";
+import Svg, { Circle } from "react-native-svg";
+import {
+  getMedications,
+  Medication,
+  getTodaysDoses,
+  recordDose,
+  DoseHistory,
+} from "../utils/storage";
+import { useFocusEffect } from "@react-navigation/native";
+import {
+  registerForPushNotificationsAsync,
+  scheduleMedicationReminder,
+} from "../utils/notifications";
+import React from "react";
 
 const { width } = Dimensions.get("window");
 
+// Create animated circle component
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
 const QUICK_ACTIONS = [
@@ -76,7 +99,7 @@ function CircularProgress({
     <View style={styles.progressContainer}>
       <View style={styles.progressTextContainer}>
         <Text style={styles.progressPercentage}>
-          {Math.round((progress * 100)/100)}%
+          {Math.round(progress * 100)}%
         </Text>
         <Text style={styles.progressDetails}>
           {completedDoses} of {totalDoses} doses
@@ -108,7 +131,7 @@ function CircularProgress({
   );
 }
 
-const home = () => {
+export default function HomeScreen() {
   const router = useRouter();
   const [showNotifications, setShowNotifications] = useState(false);
   const [medications, setMedications] = useState<Medication[]>([]);
@@ -225,31 +248,42 @@ const home = () => {
     todaysMedications.length > 0
       ? completedDoses / (todaysMedications.length * 2)
       : 0;
+
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <LinearGradient colors={["#1aAe2d", "#146922"]} style={styles.header}>
+      <LinearGradient colors={["#1a8e2d", "#146922"]} style={styles.header}>
         <View style={styles.headerContent}>
           <View style={styles.headerTop}>
-            <View style={{ flex: 1 }}>
-              <Text style={styles.greeting}>Daily Progress d</Text>
+            <View style={styles.flex1}>
+              <Text style={styles.greeting}>Daily Progress</Text>
             </View>
-            <TouchableOpacity style={styles.notificationButton}>
+            <TouchableOpacity
+              style={styles.notificationButton}
+              onPress={() => setShowNotifications(true)}
+            >
               <Ionicons name="notifications-outline" size={24} color="white" />
+              {todaysMedications.length > 0 && (
+                <View style={styles.notificationBadge}>
+                  <Text style={styles.notificationCount}>
+                    {todaysMedications.length}
+                  </Text>
+                </View>
+              )}
             </TouchableOpacity>
           </View>
           <CircularProgress
-            progress={75}
-            totalDoses={100}
-            completedDoses={75}
+            progress={progress}
+            totalDoses={todaysMedications.length * 2}
+            completedDoses={completedDoses}
           />
         </View>
       </LinearGradient>
+
       <View style={styles.content}>
         <View style={styles.quickActionsContainer}>
           <Text style={styles.sectionTitle}>Quick Actions</Text>
           <View style={styles.quickActionsGrid}>
             {QUICK_ACTIONS.map((action) => (
-              // @ts-ignore
               <Link href={action.route} key={action.label} asChild>
                 <TouchableOpacity style={styles.actionButton}>
                   <LinearGradient
@@ -268,17 +302,16 @@ const home = () => {
             ))}
           </View>
         </View>
-        <View>
-          <View>
-            <Text>Today's Schedule</Text>
 
-            <Link rel="stylesheet" href="/calendar">
+        <View style={styles.section}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>Today's Schedule</Text>
+            <Link href="/calendar" asChild>
               <TouchableOpacity>
-                <Text>See All</Text>
+                <Text style={styles.seeAllButton}>See All</Text>
               </TouchableOpacity>
             </Link>
           </View>
-
           {todaysMedications.length === 0 ? (
             <View style={styles.emptyState}>
               <Ionicons name="medical-outline" size={48} color="#ccc" />
@@ -295,8 +328,7 @@ const home = () => {
             </View>
           ) : (
             todaysMedications.map((medication) => {
-              // const taken = isDoseTaken(medication.id);
-              const taken = false; // Replace with actual function call to check if dose is taken
+              const taken = isDoseTaken(medication.id);
               return (
                 <View key={medication.id} style={styles.doseCard}>
                   <View
@@ -336,7 +368,7 @@ const home = () => {
                         styles.takeDoseButton,
                         { backgroundColor: medication.color },
                       ]}
-                      onPress={() => {}}
+                      onPress={() => handleTakeDose(medication)}
                     >
                       <Text style={styles.takeDoseText}>Take</Text>
                     </TouchableOpacity>
@@ -347,11 +379,48 @@ const home = () => {
           )}
         </View>
       </View>
+
+      <Modal
+        visible={showNotifications}
+        animationType="slide"
+        transparent={true}
+        onRequestClose={() => setShowNotifications(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <View style={styles.modalHeader}>
+              <Text style={styles.modalTitle}>Notifications</Text>
+              <TouchableOpacity
+                onPress={() => setShowNotifications(false)}
+                style={styles.closeButton}
+              >
+                <Ionicons name="close" size={24} color="#333" />
+              </TouchableOpacity>
+            </View>
+            {todaysMedications.map((medication) => (
+              <View key={medication.id} style={styles.notificationItem}>
+                <View style={styles.notificationIcon}>
+                  <Ionicons name="medical" size={24} color={medication.color} />
+                </View>
+                <View style={styles.notificationContent}>
+                  <Text style={styles.notificationTitle}>
+                    {medication.name}
+                  </Text>
+                  <Text style={styles.notificationMessage}>
+                    {medication.dosage}
+                  </Text>
+                  <Text style={styles.notificationTime}>
+                    {medication.times[0]}
+                  </Text>
+                </View>
+              </View>
+            ))}
+          </View>
+        </View>
+      </Modal>
     </ScrollView>
   );
 }
-
-export default home
 
 const styles = StyleSheet.create({
   container: {
