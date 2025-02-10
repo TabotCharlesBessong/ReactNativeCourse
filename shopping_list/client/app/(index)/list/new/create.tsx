@@ -5,31 +5,30 @@ import { BodyScrollView } from "@/components/ui/BodyScrollView";
 import Button from "@/components/ui/button";
 import TextInput from "@/components/ui/text-input";
 import { appleBlue, backgroundColors, emojies } from "@/constants/Colors";
-// import { useListCreation } from "@/context/ListCreationContext";
+import { useListCreation } from "@/context/ListCreationContext";
 // import { useAddShoppingListCallback } from "@/stores/ShoppingListsStore";
 
 export default function CreateListScreen() {
   const [listName, setListName] = useState("");
   const [listDescription, setListDescription] = useState("");
-  const selectedColor = ""
-  // const { selectedEmoji, setSelectedEmoji, selectedColor, setSelectedColor } =
-  //   useListCreation();
+  const { selectedEmoji, setSelectedEmoji, selectedColor, setSelectedColor } =
+    useListCreation();
 
   const router = useRouter();
   // const useAddShoppingList = useAddShoppingListCallback();
 
-  // useEffect(() => {
-  //   setSelectedEmoji(emojies[Math.floor(Math.random() * emojies.length)]);
-  //   setSelectedColor(
-  //     backgroundColors[Math.floor(Math.random() * backgroundColors.length)]
-  //   );
+  useEffect(() => {
+    setSelectedEmoji(emojies[Math.floor(Math.random() * emojies.length)]);
+    setSelectedColor(
+      backgroundColors[Math.floor(Math.random() * backgroundColors.length)]
+    );
 
-  //   // Cleanup function to reset context when unmounting
-  //   return () => {
-  //     setSelectedEmoji("");
-  //     setSelectedColor("");
-  //   };
-  // }, []);
+    // Cleanup function to reset context when unmounting
+    return () => {
+      setSelectedEmoji("");
+      setSelectedColor("");
+    };
+  }, []);
 
   const handleCreateList = () => {
     if (!listName) {
@@ -117,7 +116,7 @@ export default function CreateListScreen() {
             style={[styles.emojiButton, { borderColor: selectedColor }]}
           >
             <View style={styles.emojiContainer}>
-              {/* <Text>{selectedEmoji}</Text> */}
+              <Text>{selectedEmoji}</Text>
             </View>
           </Link>
           <Link
