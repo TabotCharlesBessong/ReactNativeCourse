@@ -1,5 +1,6 @@
 import Button from "@/components/ui/button";
 import { ListCreationProvider } from "@/context/ListCreationContext";
+import ShoppingListsStore from "@/store/ShoppingListsStore";
 import { Stack, useRouter } from "expo-router";
 import { Provider as TinybaseProvider } from "tinybase/ui-react";
 
@@ -7,6 +8,7 @@ export default function HomeRouteLayout() {
   const router = useRouter();
   return (
     <TinybaseProvider>
+      <ShoppingListsStore />
       <ListCreationProvider>
         <Stack>
           <Stack.Screen

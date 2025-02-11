@@ -11,6 +11,7 @@ import {
 // import { useUserIdAndNickname } from "@/hooks/useNickname";
 import { useCreateClientPersisterAndStart } from "@/store/persistence/useCreateClientPersistorAndStart";
 import { useCreateServerSynchronizerAndStart } from "./synchronization/useCreateServerSynchronizerAndStart";
+import { useUserIdAndNickname } from "@/hooks/useNickename";
 
 const STORE_ID_PREFIX = "shoppingListStore-";
 
@@ -67,8 +68,8 @@ const useStoreId = (listId: string) => STORE_ID_PREFIX + listId;
 // Returns a callback that adds a new product to the shopping list.
 export const useAddShoppingListProductCallback = (listId: string) => {
   const store = useStore(useStoreId(listId));
-  // const [userId] = useUserIdAndNickname();
-  const userId = "user123"; // Placeholder for actual user ID.
+  const [userId] = useUserIdAndNickname();
+  // const userId = "user123"; // Placeholder for actual user ID.
   return useCallback(
     (name: string, quantity: number, units: string, notes: string) => {
       const id = randomUUID();
