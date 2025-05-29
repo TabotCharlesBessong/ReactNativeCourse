@@ -1,10 +1,11 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Stack, useRouter, useSegments } from "expo-router";
 import * as React from "react";
 import { ActivityIndicator, View } from "react-native";
-import { AuthProvider, useAuth } from "../lib/auth-context";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { PaperProvider } from "react-native-paper";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { AuthProvider, useAuth } from "../lib/auth-context";
 
 const queryClient = new QueryClient();
 
@@ -41,20 +42,21 @@ const RouteGuard = ({ children }: { children: React.ReactNode }) => {
 
 export default function RootLayout() {
   return (
-    <QueryClientProvider client={queryClient} >
-
-    <AuthProvider>
-      <PaperProvider>
-        <SafeAreaProvider>
-          <RouteGuard>
-            <Stack screenOptions={{ headerShown: false }}>
-              <Stack.Screen name="auth" />
-              <Stack.Screen name="(tabs)" />
-            </Stack>
-          </RouteGuard>
-        </SafeAreaProvider>
-      </PaperProvider>
-    </AuthProvider>
-    </QueryClientProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <QueryClientProvider client={queryClient} >
+        <AuthProvider>
+          <PaperProvider>
+            <SafeAreaProvider>
+              <RouteGuard>
+                <Stack screenOptions={{ headerShown: false }}>
+                  <Stack.Screen name="auth" />
+                  <Stack.Screen name="(tabs)" />
+                </Stack>
+              </RouteGuard>
+            </SafeAreaProvider>
+          </PaperProvider>
+        </AuthProvider>
+      </QueryClientProvider>
+    </GestureHandlerRootView>
   );
 }
