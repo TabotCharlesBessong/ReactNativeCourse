@@ -1,0 +1,16 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "server"
+main = "index.ts"
+compatibility_date = "2025-02-11"
+route = { pattern = "groceries-shopping-list.tinybase.cloud", custom_domain = true }
+
+[observability]
+enabled = true
+
+[[durable_objects.bindings]]
+name = "GroceriesDurableObjects"
+class_name = "GroceriesDurableObject"
+
+[[migrations]]
+tag = "v1"
+new_classes = ["GroceriesDurableObject"]
