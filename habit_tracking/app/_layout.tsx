@@ -1,4 +1,4 @@
-import { Stack, useRouter } from "expo-router";
+import { Stack, useRouter, useSegments } from "expo-router";
 import * as React from "react";
 import { ActivityIndicator, View } from "react-native";
 import { AuthProvider, useAuth } from "../lib/auth-context";
@@ -6,23 +6,24 @@ import { AuthProvider, useAuth } from "../lib/auth-context";
 const RouteGuard = ({ children }: { children: React.ReactNode }) => {
   const { user, isLoadingUser } = useAuth();
   const router = useRouter();
-  const [isLoading, setIsLoading] = React.useState(true);
+  const segments = useSegments();
 
   React.useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        if (!isLoadingUser && !user) {
-          router.replace("/auth");
-        }
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    
-    checkAuth();
-  }, [user, isLoadingUser]);
+    const inAuthGroup = segments[0] === "auth";
+    const inTabsGroup = segments[0] === "(tabs)";
 
-  if (isLoading || isLoadingUser) {
+    if (!isLoadingUser) {
+      if (user && inAuthGroup) {
+        // If user is authenticated but in auth group, redirect to tabs
+        router.replace("/(tabs)");
+      } else if (!user && !inAuthGroup) {
+        // If no user and not in auth group, redirect to auth
+        router.replace("/auth");
+      }
+    }
+  }, [user, isLoadingUser, segments]);
+
+  if (isLoadingUser) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <ActivityIndicator size="large" />
