@@ -1,9 +1,10 @@
 import * as ImagePicker from "expo-image-picker";
 import { useEffect, useRef, useState } from "react";
-import { ImageSourcePropType, StyleSheet, View } from "react-native";
+import { ImageSourcePropType, Platform, StyleSheet, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import * as MediaLibrary from "expo-media-library/legacy"
 import {captureRef} from "react-native-view-shot"
+import domtoimage from "dom-to-image"
 
 import Button from "@/components/Button";
 import ImageViewer from "@/components/ImageViewer";
@@ -23,7 +24,7 @@ export default function Index() {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false)
   const [pickedImage, setPickedImage] = useState<ImageSourcePropType | undefined>(undefined)
   
-  const imageRef = useRef<View>(null)
+  const imageRef = useRef<View | null>(null)
   const [permissionResponse,requestPermission] = ImagePicker.useMediaLibraryPermissions()
 
   const pickImageAsync = async () => {
@@ -55,19 +56,38 @@ export default function Index() {
   }
 
   const onSaveImageAsync = async () => {
-    try {
-      const localUri = await captureRef(imageRef,{
-        height:440,
-        quality:1
-      })
-
-      await MediaLibrary.saveToLibraryAsync(localUri)
-      if(localUri){
-        alert('Saved!')
-        console.log({localUri})
+    if (Platform.OS !== "web"){
+      try {
+        const localUri = await captureRef(imageRef,{
+          height:440,
+          quality:1
+        })
+  
+        await MediaLibrary.saveToLibraryAsync(localUri)
+        if(localUri){
+          alert('Saved!')
+          console.log({localUri})
+        }
+      } catch (error) {
+        console.log(error)
       }
-    } catch (error) {
-      console.log(error)
+    }else{
+      try {
+        if (imageRef.current) {
+          const dataUrl = await domtoimage.toJpeg(imageRef.current as any, {
+            quality: 0.95,
+            width: 320,
+            height: 440,
+          });
+          let link = document.createElement('a')
+          link.download = 'sticker-smash-jpeg'
+          link.href = dataUrl
+          link.click()
+        }
+
+      } catch (error) {
+        console.log(error)
+      }
     }
   };
 
